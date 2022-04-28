@@ -8,6 +8,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * DataInitializer class for initializing data for running the Application
@@ -52,6 +53,9 @@ public class DataInitializer implements CommandLineRunner {
         Person newlyCreatedPersonForDelete = personJpaRepositoy.insert(new Person(fs.name().fullName(), fs.address().cityName(), new Date()));
         String personDeleted = personJpaRepositoy.deletePerson(newlyCreatedPersonForDelete.getId());
         System.out.println(personDeleted);
+
+        List<Person> allPersons = personJpaRepositoy.findAll();
+        allPersons.forEach(p -> System.out.println(p.getName()));
 
 
     }
