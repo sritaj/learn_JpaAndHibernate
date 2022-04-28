@@ -27,5 +27,8 @@ public class DataInitializer implements CommandLineRunner {
         Person person = personJdbcDao.findPersonById(10002);
         System.out.println(person);
 
+        int rowAffected = personJdbcDao.deletePersonById(10001);
+        System.out.println(rowAffected);
+
     }
 }
