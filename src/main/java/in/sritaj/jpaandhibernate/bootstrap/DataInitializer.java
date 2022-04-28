@@ -1,7 +1,9 @@
 package in.sritaj.jpaandhibernate.bootstrap;
 
 import com.github.javafaker.Faker;
+import in.sritaj.jpaandhibernate.entity.Course;
 import in.sritaj.jpaandhibernate.entity.Person;
+import in.sritaj.jpaandhibernate.repository.CourseRepository;
 import in.sritaj.jpaandhibernate.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -19,10 +21,14 @@ public class DataInitializer implements CommandLineRunner {
     @Autowired
     PersonRepository personRepository;
 
+    @Autowired
+    CourseRepository courseRepository;
+
     Faker fs = new Faker();
 
-    public DataInitializer(PersonRepository personJpaRepositoy) {
-        this.personRepository = personJpaRepositoy;
+    public DataInitializer(PersonRepository personRepository, CourseRepository courseRepository) {
+        this.personRepository = personRepository;
+        this.courseRepository = courseRepository;
     }
 
     /**
@@ -33,6 +39,7 @@ public class DataInitializer implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
+        //Data Initialization for People class
         Person personFromJPARepo = personRepository.findById(10001);
         System.out.println(personFromJPARepo);
 
@@ -57,6 +64,9 @@ public class DataInitializer implements CommandLineRunner {
         List<Person> allPersons = personRepository.findAll();
         allPersons.forEach(p -> System.out.println(p.getName()));
 
-
+        //Data Initialization for Course class
+        Course course = courseRepository.findById(18999L);
+        System.out.println(course);
+        
     }
 }
