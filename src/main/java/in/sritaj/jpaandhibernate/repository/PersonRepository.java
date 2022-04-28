@@ -1,4 +1,4 @@
-package in.sritaj.jpaandhibernate.jpa;
+package in.sritaj.jpaandhibernate.repository;
 
 import in.sritaj.jpaandhibernate.entity.Person;
 import org.springframework.stereotype.Repository;
@@ -15,7 +15,7 @@ import java.util.Objects;
  */
 @Repository
 @Transactional
-public class PersonJpaRepository {
+public class PersonRepository {
 
     //Connection to database
     @PersistenceContext

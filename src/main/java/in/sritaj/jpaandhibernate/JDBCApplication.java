@@ -1,11 +1,10 @@
 package in.sritaj.jpaandhibernate;
 
 import in.sritaj.jpaandhibernate.entity.Person;
-import in.sritaj.jpaandhibernate.jdbc.PersonJdbcDao;
+import in.sritaj.jpaandhibernate.jdbcRepository.PersonJdbcDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.Date;
 import java.util.List;

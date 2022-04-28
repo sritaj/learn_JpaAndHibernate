@@ -1,4 +1,4 @@
-package in.sritaj.jpaandhibernate.jdbc;
+package in.sritaj.jpaandhibernate.jdbcRepository;
 
 import in.sritaj.jpaandhibernate.entity.Person;
 import org.springframework.beans.factory.annotation.Autowired;

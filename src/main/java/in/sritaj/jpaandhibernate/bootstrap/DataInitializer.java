@@ -2,7 +2,7 @@ package in.sritaj.jpaandhibernate.bootstrap;
 
 import com.github.javafaker.Faker;
 import in.sritaj.jpaandhibernate.entity.Person;
-import in.sritaj.jpaandhibernate.jpa.PersonJpaRepository;
+import in.sritaj.jpaandhibernate.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -17,12 +17,12 @@ import java.util.List;
 public class DataInitializer implements CommandLineRunner {
 
     @Autowired
-    PersonJpaRepository personJpaRepositoy;
+    PersonRepository personRepository;
 
     Faker fs = new Faker();
 
-    public DataInitializer(PersonJpaRepository personJpaRepositoy) {
-        this.personJpaRepositoy = personJpaRepositoy;
+    public DataInitializer(PersonRepository personJpaRepositoy) {
+        this.personRepository = personJpaRepositoy;
     }
 
     /**
@@ -33,28 +33,28 @@ public class DataInitializer implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        Person personFromJPARepo = personJpaRepositoy.findById(10001);
+        Person personFromJPARepo = personRepository.findById(10001);
         System.out.println(personFromJPARepo);
 
-        Person newlyCreatedPerson = personJpaRepositoy.insert(new Person(fs.name().fullName(), fs.address().cityName(), new Date()));
+        Person newlyCreatedPerson = personRepository.insert(new Person(fs.name().fullName(), fs.address().cityName(), new Date()));
         System.out.println(newlyCreatedPerson);
         System.out.println(newlyCreatedPerson.getId());
 
         newlyCreatedPerson.setName(fs.name().fullName());
-        String updatedPerson =  personJpaRepositoy.update(newlyCreatedPerson.getId(),newlyCreatedPerson);
+        String updatedPerson =  personRepository.update(newlyCreatedPerson.getId(),newlyCreatedPerson);
         System.out.println(updatedPerson);
 
-        String newlyCreatedPersonWhenIDDoesntExist = personJpaRepositoy.update(123456 , new Person(fs.name().fullName(), fs.address().cityName(), new Date()));
+        String newlyCreatedPersonWhenIDDoesntExist = personRepository.update(123456 , new Person(fs.name().fullName(), fs.address().cityName(), new Date()));
         System.out.println(newlyCreatedPersonWhenIDDoesntExist);
 
-        String personDeleteWhenIDDoesntExist = personJpaRepositoy.deletePerson(10393);
+        String personDeleteWhenIDDoesntExist = personRepository.deletePerson(10393);
         System.out.println(personDeleteWhenIDDoesntExist);
 
-        Person newlyCreatedPersonForDelete = personJpaRepositoy.insert(new Person(fs.name().fullName(), fs.address().cityName(), new Date()));
-        String personDeleted = personJpaRepositoy.deletePerson(newlyCreatedPersonForDelete.getId());
+        Person newlyCreatedPersonForDelete = personRepository.insert(new Person(fs.name().fullName(), fs.address().cityName(), new Date()));
+        String personDeleted = personRepository.deletePerson(newlyCreatedPersonForDelete.getId());
         System.out.println(personDeleted);
 
-        List<Person> allPersons = personJpaRepositoy.findAll();
+        List<Person> allPersons = personRepository.findAll();
         allPersons.forEach(p -> System.out.println(p.getName()));
 
 
