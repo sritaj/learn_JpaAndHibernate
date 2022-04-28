@@ -24,5 +24,8 @@ public class DataInitializer implements CommandLineRunner {
             System.out.println(p);
         }
 
+        Person person = personJdbcDao.findPersonById(10002);
+        System.out.println(person);
+
     }
 }
