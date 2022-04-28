@@ -5,7 +5,9 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -68,6 +70,16 @@ public class PersonJpaRepository {
         }
         entityManager.remove(person);
         return "Person removed";
+    }
+
+    /**
+     * Method to fetch All the Person records
+     *
+     * @return List<People> - list of people
+     */
+    public List<Person> findAll(){
+        TypedQuery<Person> namedQuery = entityManager.createNamedQuery("find_all_persons", Person.class);
+        return namedQuery.getResultList();
     }
 
 }
