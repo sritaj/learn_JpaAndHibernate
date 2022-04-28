@@ -1,5 +1,6 @@
 package in.sritaj.jpaandhibernate.bootstrap;
 
+import com.github.javafaker.Faker;
 import in.sritaj.jpaandhibernate.entity.Person;
 import in.sritaj.jpaandhibernate.jpa.PersonJpaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,8 @@ public class DataInitializer implements CommandLineRunner {
     @Autowired
     PersonJpaRepository personJpaRepositoy;
 
+    Faker fs = new Faker();
+
     public DataInitializer(PersonJpaRepository personJpaRepositoy) {
         this.personJpaRepositoy = personJpaRepositoy;
     }
@@ -32,21 +35,21 @@ public class DataInitializer implements CommandLineRunner {
         Person personFromJPARepo = personJpaRepositoy.findById(10001);
         System.out.println(personFromJPARepo);
 
-        Person newlyCreatedPerson = personJpaRepositoy.insert(new Person("Harry", "London", new Date()));
+        Person newlyCreatedPerson = personJpaRepositoy.insert(new Person(fs.name().fullName(), fs.address().cityName(), new Date()));
         System.out.println(newlyCreatedPerson);
         System.out.println(newlyCreatedPerson.getId());
 
-        newlyCreatedPerson.setName("Harry Potter");
+        newlyCreatedPerson.setName(fs.name().fullName());
         String updatedPerson =  personJpaRepositoy.update(newlyCreatedPerson.getId(),newlyCreatedPerson);
         System.out.println(updatedPerson);
 
-        String newlyCreatedPersonWhenIDDoesntExist = personJpaRepositoy.update(123456 , new Person("Ron", "London", new Date()));
+        String newlyCreatedPersonWhenIDDoesntExist = personJpaRepositoy.update(123456 , new Person(fs.name().fullName(), fs.address().cityName(), new Date()));
         System.out.println(newlyCreatedPersonWhenIDDoesntExist);
 
         String personDeleteWhenIDDoesntExist = personJpaRepositoy.deletePerson(10393);
         System.out.println(personDeleteWhenIDDoesntExist);
 
-        Person newlyCreatedPersonForDelete = personJpaRepositoy.insert(new Person("Malfoy", "London", new Date()));
+        Person newlyCreatedPersonForDelete = personJpaRepositoy.insert(new Person(fs.name().fullName(), fs.address().cityName(), new Date()));
         String personDeleted = personJpaRepositoy.deletePerson(newlyCreatedPersonForDelete.getId());
         System.out.println(personDeleted);
 
