@@ -3,20 +3,34 @@ package in.sritaj.jpaandhibernate.entity;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.persistence.*;
 import java.util.Date;
 
 @Getter
 @Setter
+@Entity
 public class Person {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+
     private String name;
     private String location;
+    @Column(name = "birth_date")
     private Date birthdate;
 
     public Person() {
     }
 
+    //Constructor for Hibernate and JPA implementation
+    public Person(String name, String location, Date birthdate) {
+        this.name = name;
+        this.location = location;
+        this.birthdate = birthdate;
+    }
+
+    //Constructor for JDBC implementation
     public Person(int id, String name, String location, Date birthdate) {
         this.id = id;
         this.name = name;
