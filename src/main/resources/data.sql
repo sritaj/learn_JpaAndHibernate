@@ -12,5 +12,8 @@ values(10001, 'sritaj', 'odisha', sysdate());
 Insert into PERSON(id, name, location, birth_date)
 values(10002, 'anusha', 'karnataka', sysdate());
 
+Insert into COURSE(id, course_name)
+values(18999, 'Geography')
+
 
 
