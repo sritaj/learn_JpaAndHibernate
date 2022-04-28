@@ -22,4 +22,11 @@ public class Course {
     Course(String courseName){
         this.courseName = courseName;
     }
+
+    @Override
+    public String toString() {
+        return "Course{" +
+                "courseName='" + courseName + '\'' +
+                '}';
+    }
 }
