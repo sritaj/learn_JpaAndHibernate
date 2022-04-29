@@ -22,7 +22,9 @@ public class CourseRepository {
     @Autowired
     EntityManager entityManager;
 
-    private String selectAllJPQLQuery = "Select c from Course c";
+    private final String selectAllJPQLQuery = "Select c from Course c";
+    private final String selectAllNativeSQLQuery = "Select * from Course";
+    private final String selectRecordNativeQuery = "Select * from Course where id =?";
 
     /**
      * Method to fetch Course based on id
@@ -82,5 +84,27 @@ public class CourseRepository {
     public List<Course> fetchAllRecords_typedQuery() {
         TypedQuery<Course> typedQuery = entityManager.createQuery(selectAllJPQLQuery, Course.class);
         return typedQuery.getResultList();
+    }
+
+    /**
+     * Method to select and retrieve all the records using Native SQL query
+     *
+     * @return List - Courses
+     */
+    public List fetchAllRecords_nativeQuery() {
+        Query query = entityManager.createNativeQuery(selectAllNativeSQLQuery, Course.class);
+        return query.getResultList();
+    }
+
+    /**
+     * Method to select and retrieve record based on ID
+     *
+     * @param id - specific id
+     * @return List - Courses
+     */
+    public Object fetchRecordBasedOnID_nativeQuery(Long id) {
+        Query query = entityManager.createNativeQuery(selectRecordNativeQuery, Course.class);
+        query.setParameter(1, id);
+        return query.getSingleResult();
     }
 }
