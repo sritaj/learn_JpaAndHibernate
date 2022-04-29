@@ -72,7 +72,7 @@ public class DataInitializer implements CommandLineRunner {
         newCourse.setCourseName("History Lessons");
         courseRepository.save(newCourse);
         
-        List coursesUsingQuery = courseRepository.fetchAllRecords_  basic();
+        List coursesUsingQuery = courseRepository.fetchAllRecords_basic();
         coursesUsingQuery.forEach(System.out::println);
 
         System.out.println(" ****** ");
