@@ -1,10 +1,10 @@
 package in.sritaj.jpaandhibernate.repository;
 
 import in.sritaj.jpaandhibernate.entity.Course;
-
 import org.junit.jupiter.api.Assertions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.annotations.Test;
@@ -16,7 +16,7 @@ public class CourseRepositoryTest extends AbstractTestNGSpringContextTests {
     CourseRepository courseRepository;
 
     @Test(testName = "Validate findBy returns the specified course when the ID exists")
-    public void validateFindByIDFetchesTheSpecifiedCourse(){
+    public void validateFindByIDFetchesTheSpecifiedCourse() {
         Course course = courseRepository.findById(18999L);
 
         Assertions.assertNotNull(course);
@@ -24,30 +24,30 @@ public class CourseRepositoryTest extends AbstractTestNGSpringContextTests {
     }
 
     @Test(testName = "Validate findBy returns the specified course when the ID doesn't exist")
-    public void validateFindByIDWhenTheIDDoesntExist(){
+    public void validateFindByIDWhenTheIDDoesntExist() {
         Course course = courseRepository.findById(64738474L);
 
         Assertions.assertNull(course);
     }
 
     @Test(testName = "Validate delete removes the specified course when the ID exists")
-    public void validateDeletionOfTheSpecifiedCourse(){
-        String actualMessage =  courseRepository.deleteCourse(18999L);
+    public void validateDeletionOfTheSpecifiedCourse() {
+        String actualMessage = courseRepository.deleteCourse(18999L);
 
-        Assertions.assertEquals("Course removed",actualMessage);
+        Assertions.assertEquals("Course removed", actualMessage);
     }
 
     @DirtiesContext
     @Test(testName = "Validate delete returns the proper error msg when the ID doesn't exist")
-    public void validateDeletionWhenTheIDDoesntExist(){
+    public void validateDeletionWhenTheIDDoesntExist() {
         Long id = 64738474L;
-        String actualMessage  = courseRepository.deleteCourse(id);
+        String actualMessage = courseRepository.deleteCourse(id);
 
-        Assertions.assertEquals("Can't find Course for ID " + id ,actualMessage);
+        Assertions.assertEquals("Can't find Course for ID " + id, actualMessage);
     }
 
     @Test(testName = "Validate Saving new courses")
-    public void validateSaveForCreatingNewCourse(){
+    public void validateSaveForCreatingNewCourse() {
         String courseName = "Ikigai";
         Course course = courseRepository.save(new Course(courseName));
 
@@ -56,7 +56,7 @@ public class CourseRepositoryTest extends AbstractTestNGSpringContextTests {
     }
 
     @Test(testName = "Validate Updation of existing courses")
-    public void validateSaveForUpdatingExistingCourse(){
+    public void validateSaveForUpdatingExistingCourse() {
         String courseName = "Civil";
         String updatedCourseName = "Civil Lessons";
         Course course = courseRepository.save(new Course(courseName));
@@ -69,6 +69,12 @@ public class CourseRepositoryTest extends AbstractTestNGSpringContextTests {
 
         Assertions.assertNotNull(updatedCourse);
         Assertions.assertEquals(updatedCourseName, updatedCourse.getCourseName());
+
+    }
+
+    @Test(testName = "Validate Saving new courses with nullable value", expectedExceptions = DataIntegrityViolationException.class)
+    public void validateSaveForCreatingNewCourseWithNullValue() {
+        courseRepository.save(new Course(null));
 
     }
 }
