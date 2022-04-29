@@ -19,7 +19,7 @@ public class Course {
 
     Course(){}
 
-    Course(String courseName){
+    public Course(String courseName){
         this.courseName = courseName;
     }
 
