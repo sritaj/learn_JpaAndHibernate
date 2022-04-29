@@ -69,7 +69,7 @@ public class CourseRepository {
      *
      * @return List - Courses
      */
-    public List findCourse_basic() {
+    public List fetchAllRecords_basic() {
         Query query = entityManager.createQuery(selectAllJPQLQuery);
         return query.getResultList();
     }
@@ -79,7 +79,7 @@ public class CourseRepository {
      *
      * @return List<Courses> - Courses
      */
-    public List<Course> findCourse_typedQuery() {
+    public List<Course> fetchAllRecords_typedQuery() {
         TypedQuery<Course> typedQuery = entityManager.createQuery(selectAllJPQLQuery, Course.class);
         return typedQuery.getResultList();
     }
