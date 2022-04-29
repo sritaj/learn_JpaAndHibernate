@@ -1,5 +1,6 @@
 package in.sritaj.jpaandhibernate.repository;
 
+import com.github.javafaker.Faker;
 import in.sritaj.jpaandhibernate.entity.Course;
 import org.junit.jupiter.api.Assertions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,8 @@ public class CourseRepositoryTest extends AbstractTestNGSpringContextTests {
 
     @Autowired
     CourseRepository courseRepository;
+
+    Faker fs = new Faker();
 
     @Test(testName = "Validate findBy returns the specified course when the ID exists")
     public void validateFindByIDFetchesTheSpecifiedCourse() {
@@ -30,7 +33,7 @@ public class CourseRepositoryTest extends AbstractTestNGSpringContextTests {
         Assertions.assertNull(course);
     }
 
-    @Test(testName = "Validate delete removes the specified course when the ID exists")
+    @Test(testName = "Validate Delete removes the specified course when the ID exists")
     public void validateDeletionOfTheSpecifiedCourse() {
         String actualMessage = courseRepository.deleteCourse(18999L);
 
@@ -38,7 +41,7 @@ public class CourseRepositoryTest extends AbstractTestNGSpringContextTests {
     }
 
     @DirtiesContext
-    @Test(testName = "Validate delete returns the proper error msg when the ID doesn't exist")
+    @Test(testName = "Validate Delete returns the proper error msg when the ID doesn't exist")
     public void validateDeletionWhenTheIDDoesntExist() {
         Long id = 64738474L;
         String actualMessage = courseRepository.deleteCourse(id);
@@ -48,7 +51,7 @@ public class CourseRepositoryTest extends AbstractTestNGSpringContextTests {
 
     @Test(testName = "Validate Saving new courses")
     public void validateSaveForCreatingNewCourse() {
-        String courseName = "Ikigai";
+        String courseName = fs.book().title();
         Course course = courseRepository.save(new Course(courseName));
 
         Assertions.assertNotNull(course);
@@ -57,8 +60,8 @@ public class CourseRepositoryTest extends AbstractTestNGSpringContextTests {
 
     @Test(testName = "Validate Updation of existing courses")
     public void validateSaveForUpdatingExistingCourse() {
-        String courseName = "Civil";
-        String updatedCourseName = "Civil Lessons";
+        String courseName = fs.book().title();
+        String updatedCourseName = fs.book().title();
         Course course = courseRepository.save(new Course(courseName));
 
         Assertions.assertNotNull(course);
@@ -76,5 +79,14 @@ public class CourseRepositoryTest extends AbstractTestNGSpringContextTests {
     public void validateSaveForCreatingNewCourseWithNullValue() {
         courseRepository.save(new Course(null));
 
+    }
+
+    @Test(testName = "Validate fetching of Record based on ID")
+    public void validateFetchingOnfRecordBasedOnID() {
+        String courseName = fs.book().title();
+        Course course = courseRepository.save(new Course(courseName));
+
+        Course actualCourseAdded = (Course)courseRepository.fetchRecordBasedOnID_nativeQuery(course.getId());
+        Assertions.assertEquals(courseName, actualCourseAdded.getCourseName());
     }
 }
