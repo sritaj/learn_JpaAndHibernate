@@ -43,4 +43,19 @@ public class CourseRepository {
         entityManager.remove(course);
         return "Course removed";
     }
+
+    /**
+     * Method to create/update course
+     *
+     * @param course - course entity
+     * @return Course - created/updated Course entity
+     */
+    public Course save(Course course){
+        if(Objects.isNull(course.getId())){
+            entityManager.persist(course);
+        } else {
+            entityManager.merge(course);
+        }
+        return course;
+    }
 }
