@@ -5,6 +5,7 @@ import in.sritaj.jpaandhibernate.entity.Course;
 import org.junit.jupiter.api.Assertions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.annotations.Test;
 
@@ -27,5 +28,21 @@ public class CourseRepositoryTest extends AbstractTestNGSpringContextTests {
         Course course = courseRepository.findById(64738474L);
 
         Assertions.assertNull(course);
+    }
+
+    @Test(testName = "Validate delete removes the specified course when the ID exists")
+    public void validateDeletionOfTheSpecifiedCourse(){
+        String actualMessage =  courseRepository.deleteCourse(18999L);
+
+        Assertions.assertEquals("Course removed",actualMessage);
+    }
+
+    @DirtiesContext
+    @Test(testName = "Validate delete returns the proper error msg when the ID doesn't exist")
+    public void validateDeletionWhenTheIDDoesntExist(){
+        Long id = 64738474L;
+        String actualMessage  = courseRepository.deleteCourse(id);
+
+        Assertions.assertEquals("Can't find Course for ID " + id ,actualMessage);
     }
 }
