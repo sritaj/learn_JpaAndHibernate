@@ -58,7 +58,7 @@ public class PersonRepository {
     }
 
     /**
-     * Method to update Person if present else create a new one
+     * Method to delete Person if present
      *
      * @param id - specific id
      * @return String - message based on deletion of existing record or not finding the record
