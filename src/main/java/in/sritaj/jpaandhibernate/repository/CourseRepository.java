@@ -5,7 +5,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -18,6 +21,8 @@ public class CourseRepository {
     //Connection to database
     @Autowired
     EntityManager entityManager;
+
+    private String selectAllJPQLQuery = "Select c from Course c";
 
     /**
      * Method to fetch Course based on id
@@ -50,12 +55,32 @@ public class CourseRepository {
      * @param course - course entity
      * @return Course - created/updated Course entity
      */
-    public Course save(Course course){
-        if(Objects.isNull(course.getId())){
+    public Course save(Course course) {
+        if (Objects.isNull(course.getId())) {
             entityManager.persist(course);
         } else {
             entityManager.merge(course);
         }
         return course;
+    }
+
+    /**
+     * Method to select and retrieve all the records using JPQL query
+     *
+     * @return List - Courses
+     */
+    public List findCourse_basic() {
+        Query query = entityManager.createQuery(selectAllJPQLQuery);
+        return query.getResultList();
+    }
+
+    /**
+     * Method to select and retrieve all the records using JPQL typed query
+     *
+     * @return List<Courses> - Courses
+     */
+    public List<Course> findCourse_typedQuery() {
+        TypedQuery<Course> typedQuery = entityManager.createQuery(selectAllJPQLQuery, Course.class);
+        return typedQuery.getResultList();
     }
 }
