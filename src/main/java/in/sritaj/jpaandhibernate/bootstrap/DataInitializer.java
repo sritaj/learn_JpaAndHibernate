@@ -80,5 +80,14 @@ public class DataInitializer implements CommandLineRunner {
         List<Course> coursesUsingTypedQuery = courseRepository.fetchAllRecords_typedQuery();
         coursesUsingTypedQuery.forEach(System.out::println);
 
+        System.out.println(" ***SQL*** ");
+
+        List coursesUsingSQLQuery = courseRepository.fetchAllRecords_nativeQuery();
+        coursesUsingSQLQuery.forEach(System.out::println);
+
+        Course newCourseAdded = courseRepository.save(new Course(fs.book().title()));
+        Object actualCourseAdded = courseRepository.fetchRecordBasedOnID_nativeQuery(newCourseAdded.getId());
+        System.out.println(actualCourseAdded.toString());
+
     }
 }
