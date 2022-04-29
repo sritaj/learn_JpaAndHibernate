@@ -14,12 +14,13 @@ public class Course {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "course_name")
+    @Column(name = "course_name", nullable = false)
     private String courseName;
 
-    Course(){}
+    Course() {
+    }
 
-    public Course(String courseName){
+    public Course(String courseName) {
         this.courseName = courseName;
     }
 
