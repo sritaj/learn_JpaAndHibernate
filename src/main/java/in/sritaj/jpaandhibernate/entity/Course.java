@@ -2,8 +2,11 @@ package in.sritaj.jpaandhibernate.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -16,6 +19,14 @@ public class Course {
 
     @Column(name = "course_name", nullable = false)
     private String courseName;
+
+    @Column(name = "created_date")
+    @CreationTimestamp
+    private LocalDateTime createdDate;
+
+    @Column(name = "last_updated_date")
+    @UpdateTimestamp
+    private LocalDateTime lastUpdatedDate;
 
     Course() {
     }
