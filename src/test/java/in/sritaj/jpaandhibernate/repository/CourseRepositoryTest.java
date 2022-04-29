@@ -45,4 +45,30 @@ public class CourseRepositoryTest extends AbstractTestNGSpringContextTests {
 
         Assertions.assertEquals("Can't find Course for ID " + id ,actualMessage);
     }
+
+    @Test(testName = "Validate Saving new courses")
+    public void validateSaveForCreatingNewCourse(){
+        String courseName = "Ikigai";
+        Course course = courseRepository.save(new Course(courseName));
+
+        Assertions.assertNotNull(course);
+        Assertions.assertEquals(courseName, course.getCourseName());
+    }
+
+    @Test(testName = "Validate Updation of existing courses")
+    public void validateSaveForUpdatingExistingCourse(){
+        String courseName = "Civil";
+        String updatedCourseName = "Civil Lessons";
+        Course course = courseRepository.save(new Course(courseName));
+
+        Assertions.assertNotNull(course);
+        Assertions.assertEquals(courseName, course.getCourseName());
+
+        course.setCourseName(updatedCourseName);
+        Course updatedCourse = courseRepository.save(course);
+
+        Assertions.assertNotNull(updatedCourse);
+        Assertions.assertEquals(updatedCourseName, updatedCourse.getCourseName());
+
+    }
 }
