@@ -89,5 +89,8 @@ public class DataInitializer implements CommandLineRunner {
         Object actualCourseAdded = courseRepository.fetchRecordBasedOnID_nativeQuery(newCourseAdded.getId());
         System.out.println(actualCourseAdded.toString());
 
+        int recordsAffected = courseRepository.updateRecordBasedOnID_nativeQuery(fs.book().title(), newCourseAdded.getId());
+        System.out.println(recordsAffected);
+
     }
 }
