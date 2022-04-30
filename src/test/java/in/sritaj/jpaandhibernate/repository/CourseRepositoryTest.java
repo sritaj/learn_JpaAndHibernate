@@ -81,12 +81,38 @@ public class CourseRepositoryTest extends AbstractTestNGSpringContextTests {
 
     }
 
-    @Test(testName = "Validate fetching of Record based on ID")
+    @Test(testName = "Validate Fetching of Record based on ID")
     public void validateFetchingOnfRecordBasedOnID() {
         String courseName = fs.book().title();
         Course course = courseRepository.save(new Course(courseName));
 
         Course actualCourseAdded = (Course)courseRepository.fetchRecordBasedOnID_nativeQuery(course.getId());
         Assertions.assertEquals(courseName, actualCourseAdded.getCourseName());
+    }
+
+    @Test(testName = "Validate Updation of Course name based on ID")
+    public void validateUpdationOfCourseNameBasedOnID(){
+        String courseName = fs.book().title();
+        Course course = courseRepository.save(new Course(courseName));
+        String updatedCourseName = fs.book().title();
+        course.setCourseName(updatedCourseName);
+
+        int rowsAffected = courseRepository.updateRecordBasedOnID_nativeQuery(updatedCourseName, course.getId());
+        Course savedCourse = courseRepository.findById(course.getId());
+
+        Assertions.assertEquals(rowsAffected, 1);
+        Assertions.assertEquals(updatedCourseName, savedCourse.getCourseName());
+
+    }
+
+    @Test(testName = "Validate Updation of Course name with null value", expectedExceptions = DataIntegrityViolationException.class)
+    public void validateUpdationOfCourseNameWithNullValue(){
+        String courseName = fs.book().title();
+        Course course = courseRepository.save(new Course(courseName));
+        String updatedCourseName = null;
+        course.setCourseName(updatedCourseName);
+
+        courseRepository.updateRecordBasedOnID_nativeQuery(updatedCourseName, course.getId());
+
     }
 }
