@@ -19,7 +19,7 @@ public class Passport {
     @Column(name = "passport_id", nullable = false, unique = true)
     private String passportID;
 
-    public Passport(String passpordID) {
+    public Passport(String passportID) {
         this.passportID = passportID;
     }
 
