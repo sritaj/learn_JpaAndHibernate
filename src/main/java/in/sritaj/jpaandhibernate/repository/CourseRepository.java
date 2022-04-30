@@ -25,6 +25,7 @@ public class CourseRepository {
     private final String selectAllJPQLQuery = "Select c from Course c";
     private final String selectAllNativeSQLQuery = "Select * from Course";
     private final String selectRecordNativeQuery = "Select * from Course where id =?";
+    private final String updateRecordNativeQuery = "Update Course set course_name = ? where id = ?";
 
     /**
      * Method to fetch Course based on id
@@ -106,5 +107,19 @@ public class CourseRepository {
         Query query = entityManager.createNativeQuery(selectRecordNativeQuery, Course.class);
         query.setParameter(1, id);
         return query.getSingleResult();
+    }
+
+    /**
+     * Method to update Course name based on ID
+     *
+     * @pqram courseName - updated Course Name
+     * @param id - specific id
+     * @return int - Rows affected
+     */
+    public int updateRecordBasedOnID_nativeQuery(String courseName, Long id) {
+        Query query = entityManager.createNativeQuery(updateRecordNativeQuery, Course.class);
+        query.setParameter(1, courseName);
+        query.setParameter(2, id);
+        return query.executeUpdate();
     }
 }
