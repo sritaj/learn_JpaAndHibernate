@@ -7,6 +7,8 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -24,6 +26,9 @@ public class Course {
     @CreationTimestamp
     private LocalDateTime createdDate;
 
+    @OneToMany(mappedBy = "course")
+    private List<Review> reviewList = new ArrayList<>();
+
     @Column(name = "last_updated_date")
     @UpdateTimestamp
     private LocalDateTime lastUpdatedDate;
@@ -33,6 +38,33 @@ public class Course {
 
     public Course(String courseName) {
         this.courseName = courseName;
+    }
+
+    /**
+     * Setter to get Reviews for the course
+     *
+     * @return  List - List of Reviews
+     */
+    public List<Review> getReviewList() {
+        return reviewList;
+    }
+
+    /**
+     * Setter to set Review for the course
+     *
+     * @param review - Review
+     */
+    public void setReview(Review review) {
+        this.reviewList.add(review);
+    }
+
+    /**
+     * Setter to remove Review for the course
+     *
+     * @param review - Review
+     */
+    public void removeReview(Review review) {
+        this.reviewList.remove(review);
     }
 
     @Override
