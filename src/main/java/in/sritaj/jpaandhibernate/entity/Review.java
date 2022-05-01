@@ -23,7 +23,7 @@ public class Review {
 
     private String description;
 
-    @ManyToOne
+    @ManyToOne(optional = false)
     private Course course;
 
     public Review(Rating rating, String description) {
