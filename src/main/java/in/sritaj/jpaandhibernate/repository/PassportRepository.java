@@ -1,0 +1,41 @@
+package in.sritaj.jpaandhibernate.repository;
+
+import in.sritaj.jpaandhibernate.entity.Passport;
+import in.sritaj.jpaandhibernate.entity.Student;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
+
+@Repository
+@Transactional
+public class PassportRepository {
+
+    //Connection to database
+    @Autowired
+    EntityManager entityManager;
+
+    /**
+     * Method to create Passport with student
+     *
+     * @param passport - passport entity
+     * @param student  - student entity
+     */
+    public void savePassportWithStudent(Student student, Passport passport) {
+        entityManager.persist(student);
+        passport.setStudent(student);
+        entityManager.persist(passport);
+    }
+
+    /**
+     * Method to fetch Passport based on id
+     *
+     * @param id - specific id
+     * @return Passport - specified Passport
+     */
+    public Passport findById(Long id) {
+        return entityManager.find(Passport.class, id);
+    }
+
+}
