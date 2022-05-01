@@ -19,6 +19,9 @@ public class Passport {
     @Column(name = "passport_id", nullable = false, unique = true)
     private String passportID;
 
+    @OneToOne(mappedBy = "passport")
+    private Student student;
+
     public Passport(String passportID) {
         this.passportID = passportID;
     }
