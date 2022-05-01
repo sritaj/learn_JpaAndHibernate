@@ -32,7 +32,7 @@ public class StudentRepository {
      * Method to fetch Student based on id
      *
      * @param id - specific id
-     * @return Course - specified Course
+     * @return Student - specified Student
      */
     public Student findById(Long id) {
         return entityManager.find(Student.class, id);
