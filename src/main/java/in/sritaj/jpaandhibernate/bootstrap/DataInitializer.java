@@ -1,18 +1,14 @@
 package in.sritaj.jpaandhibernate.bootstrap;
 
 import com.github.javafaker.Faker;
-import in.sritaj.jpaandhibernate.entity.Course;
-import in.sritaj.jpaandhibernate.entity.Passport;
-import in.sritaj.jpaandhibernate.entity.Person;
-import in.sritaj.jpaandhibernate.entity.Student;
-import in.sritaj.jpaandhibernate.repository.CourseRepository;
-import in.sritaj.jpaandhibernate.repository.PassportRepository;
-import in.sritaj.jpaandhibernate.repository.PersonRepository;
-import in.sritaj.jpaandhibernate.repository.StudentRepository;
+import in.sritaj.jpaandhibernate.entity.*;
+import in.sritaj.jpaandhibernate.enums.Rating;
+import in.sritaj.jpaandhibernate.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -34,13 +30,17 @@ public class DataInitializer implements CommandLineRunner {
     @Autowired
     PassportRepository passportRepository;
 
+    @Autowired
+    ReviewRepository reviewRepository;
+
     Faker fs = new Faker();
 
-    public DataInitializer(PersonRepository personRepository, CourseRepository courseRepository, StudentRepository studentRepository, PassportRepository passportRepository) {
+    public DataInitializer(PersonRepository personRepository, CourseRepository courseRepository, StudentRepository studentRepository, PassportRepository passportRepository, ReviewRepository reviewRepository) {
         this.personRepository = personRepository;
         this.courseRepository = courseRepository;
         this.studentRepository = studentRepository;
         this.passportRepository = passportRepository;
+        this.reviewRepository = reviewRepository;
     }
 
     /**
@@ -114,6 +114,19 @@ public class DataInitializer implements CommandLineRunner {
         Long passportNo = passport.getId();
         Passport passportDetails = passportRepository.findById(passportNo);
         System.out.println(passportDetails.getStudent().getName());
+
+        //Data Initialization for Review class
+        Course courseForReview = new Course(fs.book().title());
+        courseRepository.save(courseForReview);
+        reviewRepository.createReviewForSpecifiedCourse(courseForReview.getId(), Rating.valueOf("FOUR"), "Good One");
+
+        List<Review> listOfReviews = new ArrayList<>();
+        listOfReviews.add(new Review(Rating.valueOf("ONE"), "Bad course"));
+        listOfReviews.add(new Review(Rating.valueOf("THREE"), "Good, but more examples are required"));
+        listOfReviews.add(new Review(Rating.valueOf("FIVE"), "Kudos!! Well Explained"));
+
+        reviewRepository.createMultipleReviewsForSpecifiedCourse(courseForReview.getId(), listOfReviews);
+
 
     }
 }
