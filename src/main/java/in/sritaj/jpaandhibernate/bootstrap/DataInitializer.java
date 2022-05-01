@@ -6,6 +6,7 @@ import in.sritaj.jpaandhibernate.entity.Passport;
 import in.sritaj.jpaandhibernate.entity.Person;
 import in.sritaj.jpaandhibernate.entity.Student;
 import in.sritaj.jpaandhibernate.repository.CourseRepository;
+import in.sritaj.jpaandhibernate.repository.PassportRepository;
 import in.sritaj.jpaandhibernate.repository.PersonRepository;
 import in.sritaj.jpaandhibernate.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,12 +31,16 @@ public class DataInitializer implements CommandLineRunner {
     @Autowired
     StudentRepository studentRepository;
 
+    @Autowired
+    PassportRepository passportRepository;
+
     Faker fs = new Faker();
 
-    public DataInitializer(PersonRepository personRepository, CourseRepository courseRepository, StudentRepository studentRepository) {
+    public DataInitializer(PersonRepository personRepository, CourseRepository courseRepository, StudentRepository studentRepository, PassportRepository passportRepository) {
         this.personRepository = personRepository;
         this.courseRepository = courseRepository;
         this.studentRepository = studentRepository;
+        this.passportRepository = passportRepository;
     }
 
     /**
@@ -102,7 +107,13 @@ public class DataInitializer implements CommandLineRunner {
         //Data Initialization for Student class
         Passport passport = new Passport(fs.idNumber().ssnValid());
         Student student = new Student(fs.name().fullName());
+        System.out.println(student.getName());
         studentRepository.saveStudentWithPassport(passport, student);
+
+        //Data Initialization for Passport class
+        Long passportNo = passport.getId();
+        Passport passportDetails = passportRepository.findById(passportNo);
+        System.out.println(passportDetails.getStudent().getName());
 
     }
 }
