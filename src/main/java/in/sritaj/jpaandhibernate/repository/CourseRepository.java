@@ -112,8 +112,8 @@ public class CourseRepository {
     /**
      * Method to update Course name based on ID
      *
-     * @pqram courseName - updated Course Name
      * @param id - specific id
+     * @param courseName - updated Course Name
      * @return int - Rows affected
      */
     public int updateRecordBasedOnID_nativeQuery(String courseName, Long id) {
