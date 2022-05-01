@@ -43,7 +43,7 @@ public class Course {
     /**
      * Setter to get Reviews for the course
      *
-     * @return  List - List of Reviews
+     * @return List - List of Reviews
      */
     public List<Review> getReviewList() {
         return reviewList;
