@@ -24,8 +24,8 @@ values(20021, 'sritaj', 40000);
 Insert into STUDENT(id, name, passport_id)
 values(20022, 'anusha', 40001);
 
-Insert into REVIEW(id, rating, description)
-values(50001, 5, 'Wonderful Course');
+Insert into REVIEW(id, rating, description, course_id)
+values(50001, 5, 'Wonderful Course', 40999);
 
 
 
