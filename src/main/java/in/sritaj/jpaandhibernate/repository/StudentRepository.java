@@ -16,7 +16,6 @@ public class StudentRepository {
     @Autowired
     EntityManager entityManager;
 
-
     /**
      * Method to create student with Passport
      *
@@ -27,5 +26,15 @@ public class StudentRepository {
         entityManager.persist(passport);
         student.setPassport(passport);
         entityManager.persist(student);
+    }
+
+    /**
+     * Method to fetch Student based on id
+     *
+     * @param id - specific id
+     * @return Course - specified Course
+     */
+    public Student findById(Long id) {
+        return entityManager.find(Student.class, id);
     }
 }
