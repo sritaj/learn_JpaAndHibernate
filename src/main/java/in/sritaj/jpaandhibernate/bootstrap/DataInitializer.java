@@ -124,9 +124,13 @@ public class DataInitializer implements CommandLineRunner {
         listOfReviews.add(new Review(Rating.valueOf("ONE"), "Bad course"));
         listOfReviews.add(new Review(Rating.valueOf("THREE"), "Good, but more examples are required"));
         listOfReviews.add(new Review(Rating.valueOf("FIVE"), "Kudos!! Well Explained"));
+        Review review = new Review(Rating.valueOf("FOUR"), "Just a tad more and it will be perfect");
+        listOfReviews.add(review);
 
         reviewRepository.createMultipleReviewsForSpecifiedCourse(courseForReview.getId(), listOfReviews);
 
+        Course courseFromReview = reviewRepository.retrieveCourseBasedOnTheReview(review.getId());
+        System.out.println(courseFromReview.getCourseName());
 
     }
 }
