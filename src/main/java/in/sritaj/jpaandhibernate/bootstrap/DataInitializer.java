@@ -66,10 +66,10 @@ public class DataInitializer implements CommandLineRunner {
         System.out.println(newlyCreatedPerson.getId());
 
         newlyCreatedPerson.setName(fs.name().fullName());
-        String updatedPerson =  personRepository.update(newlyCreatedPerson.getId(),newlyCreatedPerson);
+        String updatedPerson = personRepository.update(newlyCreatedPerson.getId(), newlyCreatedPerson);
         System.out.println(updatedPerson);
 
-        String newlyCreatedPersonWhenIDDoesntExist = personRepository.update(123456 , new Person(fs.name().fullName(), fs.address().cityName(), new Date()));
+        String newlyCreatedPersonWhenIDDoesntExist = personRepository.update(123456, new Person(fs.name().fullName(), fs.address().cityName(), new Date()));
         System.out.println(newlyCreatedPersonWhenIDDoesntExist);
 
         String personDeleteWhenIDDoesntExist = personRepository.deletePerson(10393);
@@ -89,7 +89,7 @@ public class DataInitializer implements CommandLineRunner {
         Course newCourse = courseRepository.save(new Course(fs.book().title()));
         newCourse.setCourseName(fs.book().title());
         courseRepository.save(newCourse);
-        
+
         List coursesUsingQuery = courseRepository.fetchAllRecords_basic();
         coursesUsingQuery.forEach(System.out::println);
 
@@ -141,7 +141,7 @@ public class DataInitializer implements CommandLineRunner {
         //Data Initialization for Student_Course table
         HashMap<String, List<String>> details = studentRepository.retrieveStudentAndCourses(20021L);
         //System.out.println(details.get("sritaj"));
-        details.forEach((S,K) -> System.out.println(S + " " + K));
+        details.forEach((S, K) -> System.out.println(S + " " + K));
 
         Student studentWithCourse = new Student(fs.name().fullName());
         Course courseForStudent = new Course(fs.book().title());
@@ -157,6 +157,19 @@ public class DataInitializer implements CommandLineRunner {
         employeeRepository.insertEmployee(fullTimeEmployee);
         employeeRepository.insertEmployee(partTimeEmployee);
 
+        List<Course> courseWithoutStudents = courseRepository.fetchCoursesWhereStudentsAreNotMapped();
+        courseWithoutStudents.forEach(System.out::println);
+
+        System.out.println("Test");
+
+        List<Course> courseWithMinStudents = courseRepository.fetchCoursesInDescendingOrder();
+        courseWithMinStudents.forEach(System.out::println);
+
+        List<Student> studentWithPassport = studentRepository.selectStudentWithMatchingPassportPattern("%902%");
+        studentWithPassport.forEach(System.out::println);
+
+        HashMap<Object, Object> result = courseRepository.fetchCoursesAndStudentsUsingJoin();
+        result.forEach((S, K) -> System.out.println(S + " " + K));
 
     }
 }
