@@ -60,7 +60,13 @@ public class StudentRepository {
         return details;
     }
 
-    public void insertStudentAndCourses(Student student, Course course){
+    /**
+     * Method to insert Student and Course
+     *
+     * @param student - student entity
+     * @param  course - course entity
+     */
+    public void insertStudentAndCourse(Student student, Course course){
         entityManager.persist(course);
         entityManager.persist(student);
         student.setCourse(course);
