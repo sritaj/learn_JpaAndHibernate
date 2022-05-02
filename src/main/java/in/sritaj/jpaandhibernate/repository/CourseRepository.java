@@ -26,6 +26,8 @@ public class CourseRepository {
     private final String selectAllNativeSQLQuery = "Select * from Course";
     private final String selectRecordNativeQuery = "Select * from Course where id =?";
     private final String updateRecordNativeQuery = "Update Course set course_name = ? where id = ?";
+    private final String selectCoursesWithoutStudents = "Select c from Course c where c.students is empty";
+    private final String selectCourseWithMinStudentsAndOrderByDesc = "Select c from Course c order by size(c.students) desc";
 
     /**
      * Method to fetch Course based on id
@@ -122,4 +124,25 @@ public class CourseRepository {
         query.setParameter(2, id);
         return query.executeUpdate();
     }
+
+    /**
+     * Method to retrieve courses without Students using JPQL typed query
+     *
+     * @return List<Courses> - Courses
+     */
+    public List<Course> fetchCoursesWhereStudentsAreNotMapped(){
+        TypedQuery<Course> typedQuery = entityManager.createQuery(selectCoursesWithoutStudents, Course.class);
+        return typedQuery.getResultList();
+    }
+
+    /**
+     * Method to retrieve courses in Descending Order using JPQL typed query
+     *
+     * @return List<Courses> - Courses
+     */
+    public List<Course> fetchCoursesInDescendingOrder(){
+        TypedQuery<Course> typedQuery = entityManager.createQuery(selectCourseWithMinStudentsAndOrderByDesc, Course.class);
+        return typedQuery.getResultList();
+    }
+
 }
