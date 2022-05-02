@@ -1,5 +1,6 @@
 package in.sritaj.jpaandhibernate.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
@@ -30,6 +31,7 @@ public class Course {
     private List<Review> reviewList = new ArrayList<>();
 
     @ManyToMany(mappedBy = "courses")
+    @JsonIgnore
     private List<Student> students = new ArrayList<>();
 
     @Column(name = "last_updated_date")
