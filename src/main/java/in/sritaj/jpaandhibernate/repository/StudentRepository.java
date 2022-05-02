@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,6 +20,9 @@ public class StudentRepository {
     //Connection to database
     @Autowired
     EntityManager entityManager;
+
+    private final String selectStudentWithPassport = "Select s from Student s where s.passport.passportID like :q";
+
 
     /**
      * Method to create student with Passport
@@ -72,6 +76,17 @@ public class StudentRepository {
         student.setCourse(course);
         course.setStudent(student);
         entityManager.persist(student);
+    }
+
+    /**
+     * Method to retrieve Students having Passport with specific pattern using JPQL typed query
+     *
+     * @return List<Student> - Student
+     */
+    public List<Student> selectStudentWithMatchingPassportPattern(String passportString){
+        TypedQuery<Student> typedQuery = entityManager.createQuery(selectStudentWithPassport, Student.class);
+        typedQuery.setParameter("q", passportString);
+        return typedQuery.getResultList();
     }
 
 }
