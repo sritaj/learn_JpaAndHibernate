@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -34,14 +35,18 @@ public class DataInitializer implements CommandLineRunner {
     @Autowired
     ReviewRepository reviewRepository;
 
+    @Autowired
+    EmployeeRepository employeeRepository;
+
     Faker fs = new Faker();
 
-    public DataInitializer(PersonRepository personRepository, CourseRepository courseRepository, StudentRepository studentRepository, PassportRepository passportRepository, ReviewRepository reviewRepository) {
+    public DataInitializer(PersonRepository personRepository, CourseRepository courseRepository, StudentRepository studentRepository, PassportRepository passportRepository, ReviewRepository reviewRepository, EmployeeRepository employeeRepository) {
         this.personRepository = personRepository;
         this.courseRepository = courseRepository;
         this.studentRepository = studentRepository;
         this.passportRepository = passportRepository;
         this.reviewRepository = reviewRepository;
+        this.employeeRepository = employeeRepository;
     }
 
     /**
@@ -143,7 +148,15 @@ public class DataInitializer implements CommandLineRunner {
         List<Course> courses = new ArrayList<>();
         courses.add(courseForStudent);
 
-        studentRepository.insertStudentAndCourses(studentWithCourse, courseForStudent);
+        studentRepository.insertStudentAndCourse(studentWithCourse, courseForStudent);
+
+        //Data Initialization for Employee table
+        Employee fullTimeEmployee = new FullTimeEmployee("Paul", new BigDecimal(155000));
+        Employee partTimeEmployee = new PartTimEmployee("Logan", new BigDecimal(755));
+
+        employeeRepository.insertEmployee(fullTimeEmployee);
+        employeeRepository.insertEmployee(partTimeEmployee);
+
 
     }
 }
