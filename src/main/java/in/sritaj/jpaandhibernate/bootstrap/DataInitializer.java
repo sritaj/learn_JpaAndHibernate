@@ -138,5 +138,12 @@ public class DataInitializer implements CommandLineRunner {
         //System.out.println(details.get("sritaj"));
         details.forEach((S,K) -> System.out.println(S + " " + K));
 
+        Student studentWithCourse = new Student(fs.name().fullName());
+        Course courseForStudent = new Course(fs.book().title());
+        List<Course> courses = new ArrayList<>();
+        courses.add(courseForStudent);
+
+        studentRepository.insertStudentAndCourses(studentWithCourse, courseForStudent);
+
     }
 }
