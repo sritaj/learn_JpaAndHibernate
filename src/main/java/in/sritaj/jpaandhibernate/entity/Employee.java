@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorColumn(name = "Employee Type")
+@DiscriminatorColumn(name = "Employee_Type")
 public abstract class Employee {
 
     @Id
