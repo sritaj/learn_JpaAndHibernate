@@ -90,4 +90,13 @@ public class CourseSpringDataRepositoryTest extends AbstractTestNGSpringContextT
 
     }
 
+
+    @Test(testName = "Validate fetching of Courses based on name")
+    public void validateFindByName(){
+        List<Course> listOfCourses = courseSpringDataRepository.findByName("1Civil Science");
+
+        Assert.assertNotNull(listOfCourses);
+        Assert.assertEquals(listOfCourses.get(0).getId(), 40992);
+    }
+
 }
