@@ -12,7 +12,9 @@ Insert into PERSON(id, name, location, birth_date)
 values(10002, 'anusha', 'karnataka', sysdate());
 
 Insert into COURSE(id, course_name, created_date, last_updated_date)
-values(40999, 'Geography', sysdate(), sysdate());
+values
+(40999, 'Geography', sysdate(), sysdate()),
+(40991, 'History', sysdate(), sysdate());
 
 Insert into PASSPORT(id, passport_id)
 values(40000, 'E23SDK902');
@@ -26,6 +28,12 @@ values(20022, 'anusha', 40001);
 
 Insert into REVIEW(id, rating, description, course_id)
 values(50001, 5, 'Wonderful Course', 40999);
+
+Insert into STUDENT_COURSE(student_id, course_id)
+values
+(20021, 40999),
+(20021, 40991),
+(20022, 40991);
 
 
 
