@@ -44,18 +44,18 @@ public class Student {
     /**
      * Setter to set Course for the Student
      *
-     * @param course - Student
+     * @param course - Course
      */
-    public void setReview(Course course) {
+    public void setCourse(Course course) {
         this.courses.add(course);
     }
 
     /**
      * Setter to remove Course for the Student
      *
-     * @param course - Student
+     * @param course - Course
      */
-    public void removeStudent(Course course) {
+    public void removeCourse(Course course) {
         this.courses.remove(course);
     }
 
