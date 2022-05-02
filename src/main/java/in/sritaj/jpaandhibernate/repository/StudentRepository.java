@@ -59,4 +59,13 @@ public class StudentRepository {
         details.put(student.getName(), titles);
         return details;
     }
+
+    public void insertStudentAndCourses(Student student, Course course){
+        entityManager.persist(course);
+        entityManager.persist(student);
+        student.setCourse(course);
+        course.setStudent(student);
+        entityManager.persist(student);
+    }
+
 }
