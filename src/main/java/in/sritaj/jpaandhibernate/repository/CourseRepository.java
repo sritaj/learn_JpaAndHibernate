@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
@@ -28,6 +29,7 @@ public class CourseRepository {
     private final String updateRecordNativeQuery = "Update Course set course_name = ? where id = ?";
     private final String selectCoursesWithoutStudents = "Select c from Course c where c.students is empty";
     private final String selectCourseWithMinStudentsAndOrderByDesc = "Select c from Course c order by size(c.students) desc";
+    private final String selectCourseAndStudentUsingJoin = "Select c, s from Course c JOIN c.students s";
 
     /**
      * Method to fetch Course based on id
@@ -114,7 +116,7 @@ public class CourseRepository {
     /**
      * Method to update Course name based on ID
      *
-     * @param id - specific id
+     * @param id         - specific id
      * @param courseName - updated Course Name
      * @return int - Rows affected
      */
@@ -130,7 +132,7 @@ public class CourseRepository {
      *
      * @return List<Courses> - Courses
      */
-    public List<Course> fetchCoursesWhereStudentsAreNotMapped(){
+    public List<Course> fetchCoursesWhereStudentsAreNotMapped() {
         TypedQuery<Course> typedQuery = entityManager.createQuery(selectCoursesWithoutStudents, Course.class);
         return typedQuery.getResultList();
     }
@@ -140,9 +142,23 @@ public class CourseRepository {
      *
      * @return List<Courses> - Courses
      */
-    public List<Course> fetchCoursesInDescendingOrder(){
+    public List<Course> fetchCoursesInDescendingOrder() {
         TypedQuery<Course> typedQuery = entityManager.createQuery(selectCourseWithMinStudentsAndOrderByDesc, Course.class);
         return typedQuery.getResultList();
     }
 
+    /**
+     * Method to retrieve courses having students via JOIN using JPQL typed query
+     *
+     * @return Hashmap - Course as Key, Student as Value
+     */
+    public HashMap<Object, Object> fetchCoursesAndStudentsUsingJoin() {
+        Query query = entityManager.createQuery(selectCourseAndStudentUsingJoin);
+        List<Object[]> result = query.getResultList();
+        HashMap<Object, Object> resultSet = new HashMap<>();
+        for (Object[] res : result) {
+            resultSet.put(res[0], res[1]);
+        }
+        return resultSet;
+    }
 }
