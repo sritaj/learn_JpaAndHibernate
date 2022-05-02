@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -131,6 +132,11 @@ public class DataInitializer implements CommandLineRunner {
 
         Course courseFromReview = reviewRepository.retrieveCourseBasedOnTheReview(review.getId());
         System.out.println(courseFromReview.getCourseName());
+
+        //Data Initialization for Student_Course table
+        HashMap<String, List<String>> details = studentRepository.retrieveStudentAndCourses(20021L);
+        //System.out.println(details.get("sritaj"));
+        details.forEach((S,K) -> System.out.println(S + " " + K));
 
     }
 }
