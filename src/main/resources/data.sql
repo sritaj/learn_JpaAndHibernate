@@ -14,7 +14,9 @@ values(10002, 'anusha', 'karnataka', sysdate());
 Insert into COURSE(id, course_name, created_date, last_updated_date)
 values
 (40999, 'Geography', sysdate(), sysdate()),
-(40991, 'History', sysdate(), sysdate());
+(40991, 'History', sysdate(), sysdate()),
+(40992, 'Civil Science', sysdate(), sysdate()),
+(40993, 'Political Science', sysdate(), sysdate());
 
 Insert into PASSPORT(id, passport_id)
 values(40000, 'E23SDK902');
