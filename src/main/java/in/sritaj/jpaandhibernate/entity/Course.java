@@ -29,6 +29,9 @@ public class Course {
     @OneToMany(mappedBy = "course")
     private List<Review> reviewList = new ArrayList<>();
 
+    @ManyToMany(mappedBy = "courses")
+    private List<Student> students = new ArrayList<>();
+
     @Column(name = "last_updated_date")
     @UpdateTimestamp
     private LocalDateTime lastUpdatedDate;
@@ -65,6 +68,33 @@ public class Course {
      */
     public void removeReview(Review review) {
         this.reviewList.remove(review);
+    }
+
+    /**
+     * Setter to get Students for the course
+     *
+     * @return List - List of Students
+     */
+    public List<Student> getStudentList() {
+        return students;
+    }
+
+    /**
+     * Setter to set Student for the course
+     *
+     * @param student - Student
+     */
+    public void setStudent(Student student) {
+        this.students.add(student);
+    }
+
+    /**
+     * Setter to remove Student for the course
+     *
+     * @param student - Student
+     */
+    public void removeStudent(Student student) {
+        this.students.remove(student);
     }
 
     @Override
