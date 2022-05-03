@@ -11,12 +11,12 @@ values(10001, 'sritaj', 'odisha', sysdate());
 Insert into PERSON(id, name, location, birth_date)
 values(10002, 'anusha', 'karnataka', sysdate());
 
-Insert into COURSE(id, course_name, created_date, last_updated_date)
+Insert into COURSE(id, course_name, created_date, last_updated_date, is_deleted)
 values
-(40999, 'Geography', sysdate(), sysdate()),
-(40991, 'History', sysdate(), sysdate()),
-(40992, '1Civil Science', sysdate(), sysdate()),
-(40993, 'Political Science', sysdate(), sysdate());
+(40999, 'Geography', sysdate(), sysdate(), false),
+(40991, 'History', sysdate(), sysdate(), false),
+(40992, '1Civil Science', sysdate(), sysdate(), false),
+(40993, 'Political Science', sysdate(), sysdate(), false);
 
 Insert into PASSPORT(id, passport_id)
 values(40000, 'E23SDK902');
