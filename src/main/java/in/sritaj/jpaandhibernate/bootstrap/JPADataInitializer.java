@@ -170,7 +170,7 @@ public class JPADataInitializer implements CommandLineRunner {
         HashMap<Object, Object> result = courseRepository.fetchCoursesAndStudentsUsingJoin();
         result.forEach((S, K) -> System.out.println(S + " " + K));
 
-        studentRepository.setStudentAddress(20021L, new Address("13th Street", "Texas"));
+        studentRepository.setStudentAddress(student.getId(), new Address("13th Street", "Texas"));
 
     }
 }
