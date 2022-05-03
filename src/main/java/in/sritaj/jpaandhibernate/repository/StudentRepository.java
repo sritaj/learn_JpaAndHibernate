@@ -13,6 +13,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * StudentRepository class for implementing SQL queries/transactions for Student Entity using Hibernate and JPA
+ */
 @Repository
 @Transactional
 public class StudentRepository {
@@ -68,9 +71,9 @@ public class StudentRepository {
      * Method to insert Student and Course
      *
      * @param student - student entity
-     * @param  course - course entity
+     * @param course  - course entity
      */
-    public void insertStudentAndCourse(Student student, Course course){
+    public void insertStudentAndCourse(Student student, Course course) {
         entityManager.persist(course);
         entityManager.persist(student);
         student.setCourse(course);
@@ -83,7 +86,7 @@ public class StudentRepository {
      *
      * @return List<Student> - Student
      */
-    public List<Student> selectStudentWithMatchingPassportPattern(String passportString){
+    public List<Student> selectStudentWithMatchingPassportPattern(String passportString) {
         TypedQuery<Student> typedQuery = entityManager.createQuery(selectStudentWithPassport, Student.class);
         typedQuery.setParameter("q", passportString);
         return typedQuery.getResultList();

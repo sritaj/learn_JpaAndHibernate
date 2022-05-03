@@ -8,6 +8,9 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Student Entity defining the Table structure and relevant mappings with dependent entities
+ */
 @Getter
 @Setter
 @Entity

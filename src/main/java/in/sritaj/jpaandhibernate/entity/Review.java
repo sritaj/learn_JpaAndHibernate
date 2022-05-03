@@ -7,6 +7,9 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
+/**
+ * Review Entity defining the Table structure and relevant mappings with dependent entities
+ */
 @Getter
 @Setter
 @Entity

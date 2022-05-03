@@ -10,6 +10,9 @@ import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 import java.util.List;
 
+/**
+ * ReviewRepository class for implementing SQL queries/transactions for Review Entity using Hibernate and JPA
+ */
 @Repository
 @Transactional
 public class ReviewRepository {
@@ -65,6 +68,7 @@ public class ReviewRepository {
     }
 
     //TODO - Method giving failure on Retreieval, SQLNativeQuery returning same review equivalent to no of diff Reviews present
+
     /**
      * Method to retrive Reviews based on the specified Course id
      *

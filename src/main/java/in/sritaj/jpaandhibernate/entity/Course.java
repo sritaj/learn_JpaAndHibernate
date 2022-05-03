@@ -11,6 +11,9 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Course Entity defining the Table structure and relevant mappings with dependent entities
+ */
 @Getter
 @Setter
 @Entity

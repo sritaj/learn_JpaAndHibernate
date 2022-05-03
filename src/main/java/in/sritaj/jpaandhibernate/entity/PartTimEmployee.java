@@ -7,6 +7,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import java.math.BigDecimal;
 
+/**
+ * PartTimEmployee Entity defining the Table structure and relevant mappings with dependent entities
+ */
 @Entity
 @Getter
 @Setter

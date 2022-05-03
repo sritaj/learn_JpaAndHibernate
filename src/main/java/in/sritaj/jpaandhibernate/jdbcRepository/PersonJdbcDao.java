@@ -10,7 +10,7 @@ import java.sql.Timestamp;
 import java.util.List;
 
 /**
- * PersonJdbcDao class for implementing SQL queries/transactions for Person class using SpringJDBC
+ * PersonJdbcDao class for implementing SQL queries/transactions for Person Entity using SpringJDBC
  */
 @Repository
 public class PersonJdbcDao {

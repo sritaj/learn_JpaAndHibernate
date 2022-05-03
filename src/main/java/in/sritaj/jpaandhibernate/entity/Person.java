@@ -6,6 +6,9 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.util.Date;
 
+/**
+ * Person Entity defining the Table structure and relevant mappings with dependent entities
+ */
 @Getter
 @Setter
 @Entity

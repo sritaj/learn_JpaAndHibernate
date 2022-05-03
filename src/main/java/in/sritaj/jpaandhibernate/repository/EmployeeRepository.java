@@ -8,6 +8,9 @@ import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 import java.util.List;
 
+/**
+ * EmployeeRepository class for implementing SQL queries/transactions for Employee Entity using Hibernate and JPA
+ */
 @Repository
 @Transactional
 public class EmployeeRepository {

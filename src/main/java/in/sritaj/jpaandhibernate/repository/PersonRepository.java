@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * PersonJpaRepository class for implementing SQL queries/transactions for Person class using Hibernate and JPA
+ * PersonJpaRepository class for implementing SQL queries/transactions for Person Entity using Hibernate and JPA
  */
 @Repository
 @Transactional
@@ -77,7 +77,7 @@ public class PersonRepository {
      *
      * @return List<People> - list of people
      */
-    public List<Person> findAll(){
+    public List<Person> findAll() {
         TypedQuery<Person> namedQuery = entityManager.createNamedQuery("find_all_persons", Person.class);
         return namedQuery.getResultList();
     }

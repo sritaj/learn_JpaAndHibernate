@@ -5,6 +5,9 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
+/**
+ * Employee Interface defining the Table structure and relevant mappings with dependent entities
+ */
 @Entity
 @Getter
 @Setter

@@ -8,6 +8,9 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 
+/**
+ * PassportRepository class for implementing SQL queries/transactions for Passport Entity using Hibernate and JPA
+ */
 @Repository
 @Transactional
 public class PassportRepository {

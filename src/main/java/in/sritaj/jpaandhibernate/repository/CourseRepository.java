@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * CourseRepository class for implementing SQL queries/transactions for Course class using Hibernate and JPA
+ * CourseRepository class for implementing SQL queries/transactions for Course Entity using Hibernate and JPA
  */
 @Repository
 @Transactional
