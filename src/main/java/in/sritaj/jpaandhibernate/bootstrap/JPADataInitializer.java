@@ -18,7 +18,7 @@ import java.util.List;
  * DataInitializer class for initializing data for running the Application
  */
 @Component
-public class DataInitializer implements CommandLineRunner {
+public class JPADataInitializer implements CommandLineRunner {
 
     @Autowired
     private PersonRepository personRepository;
@@ -40,7 +40,7 @@ public class DataInitializer implements CommandLineRunner {
 
     Faker fs = new Faker();
 
-    public DataInitializer(PersonRepository personRepository, CourseRepository courseRepository, StudentRepository studentRepository, PassportRepository passportRepository, ReviewRepository reviewRepository, EmployeeRepository employeeRepository) {
+    public JPADataInitializer(PersonRepository personRepository, CourseRepository courseRepository, StudentRepository studentRepository, PassportRepository passportRepository, ReviewRepository reviewRepository, EmployeeRepository employeeRepository) {
         this.personRepository = personRepository;
         this.courseRepository = courseRepository;
         this.studentRepository = studentRepository;
@@ -58,7 +58,8 @@ public class DataInitializer implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
         //Data Initialization for People class
-        Person personFromJPARepo = personRepository.findById(10001);
+        Person newPerson = personRepository.insert(new Person(fs.name().fullName(), fs.address().cityName(), new Date()));
+        Person personFromJPARepo = personRepository.findById(newPerson.getId());
         System.out.println(personFromJPARepo);
 
         Person newlyCreatedPerson = personRepository.insert(new Person(fs.name().fullName(), fs.address().cityName(), new Date()));
@@ -83,7 +84,8 @@ public class DataInitializer implements CommandLineRunner {
         allPersons.forEach(p -> System.out.println(p.getName()));
 
         //Data Initialization for Course class
-        Course course = courseRepository.findById(18999L);
+        Course createCourse = courseRepository.save(new Course(fs.book().title()));
+        Course course = courseRepository.findById(createCourse.getId());
         System.out.println(course);
 
         Course newCourse = courseRepository.save(new Course(fs.book().title()));
@@ -139,10 +141,6 @@ public class DataInitializer implements CommandLineRunner {
         System.out.println(courseFromReview.getCourseName());
 
         //Data Initialization for Student_Course table
-        HashMap<String, List<String>> details = studentRepository.retrieveStudentAndCourses(20021L);
-        //System.out.println(details.get("sritaj"));
-        details.forEach((S, K) -> System.out.println(S + " " + K));
-
         Student studentWithCourse = new Student(fs.name().fullName());
         Course courseForStudent = new Course(fs.book().title());
         List<Course> courses = new ArrayList<>();
@@ -150,17 +148,18 @@ public class DataInitializer implements CommandLineRunner {
 
         studentRepository.insertStudentAndCourse(studentWithCourse, courseForStudent);
 
+        HashMap<String, List<String>> details = studentRepository.retrieveStudentAndCourses(studentWithCourse.getId());
+        details.forEach((S, K) -> System.out.println(S + " " + K));
+
         //Data Initialization for Employee table
         Employee fullTimeEmployee = new FullTimeEmployee("Paul", new BigDecimal(155000));
-        Employee partTimeEmployee = new PartTimEmployee("Logan", new BigDecimal(755));
+        Employee partTimeEmployee = new PartTimeEmployee("Logan", new BigDecimal(755));
 
         employeeRepository.insertEmployee(fullTimeEmployee);
         employeeRepository.insertEmployee(partTimeEmployee);
 
         List<Course> courseWithoutStudents = courseRepository.fetchCoursesWhereStudentsAreNotMapped();
         courseWithoutStudents.forEach(System.out::println);
-
-        System.out.println("Test");
 
         List<Course> courseWithMinStudents = courseRepository.fetchCoursesInDescendingOrder();
         courseWithMinStudents.forEach(System.out::println);
