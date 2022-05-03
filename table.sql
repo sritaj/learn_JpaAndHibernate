@@ -61,6 +61,13 @@ create table student_course (
     foreign key (course_id) references course(id)
 );
 
+create table product(
+id int PRIMARY KEY auto_increment not null,
+name varchar(20),
+description varchar(100),
+price decimal(8,3) 
+);
+
 create table book(
 id bigint PRIMARY KEY,
 title varchar (200),
