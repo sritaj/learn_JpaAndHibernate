@@ -1,5 +1,6 @@
 package in.sritaj.jpaandhibernate.repository;
 
+import in.sritaj.jpaandhibernate.entity.Address;
 import in.sritaj.jpaandhibernate.entity.Course;
 import in.sritaj.jpaandhibernate.entity.Passport;
 import in.sritaj.jpaandhibernate.entity.Student;
@@ -71,9 +72,9 @@ public class StudentRepository {
      * Method to insert Student and Course
      *
      * @param student - student entity
-     * @param  course - course entity
+     * @param course  - course entity
      */
-    public void insertStudentAndCourse(Student student, Course course){
+    public void insertStudentAndCourse(Student student, Course course) {
         entityManager.persist(course);
         entityManager.persist(student);
         student.setCourse(course);
@@ -86,10 +87,21 @@ public class StudentRepository {
      *
      * @return List<Student> - Student
      */
-    public List<Student> selectStudentWithMatchingPassportPattern(String passportString){
+    public List<Student> selectStudentWithMatchingPassportPattern(String passportString) {
         TypedQuery<Student> typedQuery = entityManager.createQuery(selectStudentWithPassport, Student.class);
         typedQuery.setParameter("q", passportString);
         return typedQuery.getResultList();
     }
 
+    /**
+     * Method to add Student Address
+     *
+     * @param ID      - student ID
+     * @param address - Address Details
+     */
+    public void setStudentAddress(Long ID, Address address) {
+        Student student = entityManager.find(Student.class, ID);
+        student.setAddress(address);
+        entityManager.persist(student);
+    }
 }
