@@ -122,4 +122,17 @@ public class CourseRepositoryTest extends AbstractTestNGSpringContextTests {
         courseRepository.updateRecordBasedOnID_nativeQuery(updatedCourseName, course.getId());
 
     }
+
+    @DirtiesContext
+    @Test(testName = "Validate Soft Delete operation")
+    public void validateSoftDeletionOfTheSpecifiedCourse() {
+        String actualMessage = courseRepository.deleteCourse(40999L);
+
+        Assert.assertEquals(actualMessage, "Course removed");
+
+        Course course = courseRepository.findById(40999L);
+
+        Assert.assertNull(course);
+
+    }
 }
