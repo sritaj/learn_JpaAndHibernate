@@ -4,7 +4,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -17,6 +19,8 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
+@SQLDelete(sql="update course set is_deleted=true where id =?")
+@Where(clause = "is_deleted=false")
 public class Course {
 
     @Id
@@ -40,6 +44,9 @@ public class Course {
     @Column(name = "last_updated_date")
     @UpdateTimestamp
     private LocalDateTime lastUpdatedDate;
+
+    @Column(name = "is_deleted")
+    private boolean isDeleted;
 
     Course() {
     }
