@@ -1,6 +1,7 @@
 package in.sritaj.jpaandhibernate.entity;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -11,6 +12,7 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
+@NoArgsConstructor
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "Employee_Type")
 public abstract class Employee {
@@ -21,9 +23,6 @@ public abstract class Employee {
 
     @Column(nullable = false)
     private String name;
-
-    Employee() {
-    }
 
     Employee(String name) {
         this.name = name;

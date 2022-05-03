@@ -1,6 +1,7 @@
 package in.sritaj.jpaandhibernate.entity;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.Column;
@@ -13,13 +14,11 @@ import java.math.BigDecimal;
 @Entity
 @Getter
 @Setter
+@NoArgsConstructor
 public class PartTimEmployee extends Employee {
 
     @Column(name = "hourly_wage")
     private BigDecimal hourlyWage;
-
-    PartTimEmployee() {
-    }
 
     public PartTimEmployee(String name, BigDecimal hourlyWage) {
         super(name);

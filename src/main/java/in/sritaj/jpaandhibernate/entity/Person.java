@@ -1,6 +1,7 @@
 package in.sritaj.jpaandhibernate.entity;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -13,6 +14,7 @@ import java.util.Date;
 @Setter
 @Entity
 @NamedQuery(name = "find_all_persons", query = "select p from Person p")
+@NoArgsConstructor
 public class Person {
 
     @Id
@@ -23,9 +25,6 @@ public class Person {
     private String location;
     @Column(name = "birth_date")
     private Date birthdate;
-
-    public Person() {
-    }
 
     //Constructor for Hibernate and JPA implementation
     public Person(String name, String location, Date birthdate) {

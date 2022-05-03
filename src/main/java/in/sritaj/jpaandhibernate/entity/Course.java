@@ -2,6 +2,7 @@ package in.sritaj.jpaandhibernate.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.SQLDelete;
@@ -19,6 +20,7 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
+@NoArgsConstructor
 @SQLDelete(sql="update course set is_deleted=true where id =?")
 @Where(clause = "is_deleted=false")
 public class Course {
@@ -47,9 +49,6 @@ public class Course {
 
     @Column(name = "is_deleted")
     private boolean isDeleted;
-
-    Course() {
-    }
 
     public Course(String courseName) {
         this.courseName = courseName;
