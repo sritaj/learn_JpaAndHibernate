@@ -19,7 +19,7 @@ public class PersonRepository {
 
     //Connection to database
     @PersistenceContext
-    EntityManager entityManager;
+    private EntityManager entityManager;
 
     /**
      * Method to fetch Person based on id

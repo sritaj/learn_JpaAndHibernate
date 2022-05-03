@@ -18,7 +18,7 @@ import java.util.List;
 public class ReviewRepository {
 
     @Autowired
-    EntityManager entityManager;
+    private EntityManager entityManager;
 
     private final String queryForFetchingReviewsForSpecifiedCourse =
             "select * from course \n" +

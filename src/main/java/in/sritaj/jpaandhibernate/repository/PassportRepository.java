@@ -17,7 +17,7 @@ public class PassportRepository {
 
     //Connection to database
     @Autowired
-    EntityManager entityManager;
+    private EntityManager entityManager;
 
     /**
      * Method to create Passport with student

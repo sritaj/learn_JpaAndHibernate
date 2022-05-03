@@ -23,7 +23,7 @@ public class StudentRepository {
 
     //Connection to database
     @Autowired
-    EntityManager entityManager;
+    private EntityManager entityManager;
 
     private final String selectStudentWithPassport = "Select s from Student s where s.passport.passportID like :q";
 

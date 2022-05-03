@@ -16,7 +16,7 @@ import java.util.List;
 public class EmployeeRepository {
 
     @Autowired
-    EntityManager entityManager;
+    private EntityManager entityManager;
 
     /**
      * Method to insert Employee

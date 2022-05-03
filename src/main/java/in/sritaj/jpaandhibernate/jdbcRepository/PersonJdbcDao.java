@@ -16,7 +16,7 @@ import java.util.List;
 public class PersonJdbcDao {
 
     @Autowired
-    JdbcTemplate jdbcTemplate;
+    private JdbcTemplate jdbcTemplate;
 
     /**
      * Method to get List of Persons from the DB

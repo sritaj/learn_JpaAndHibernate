@@ -21,7 +21,7 @@ public class CourseRepository {
 
     //Connection to database
     @Autowired
-    EntityManager entityManager;
+    private EntityManager entityManager;
 
     private final String selectAllJPQLQuery = "Select c from Course c";
     private final String selectAllNativeSQLQuery = "Select * from Course";
