@@ -29,7 +29,7 @@ Insert into STUDENT(id, name, passport_id)
 values(20022, 'anusha', 40001);
 
 Insert into REVIEW(id, rating, description, course_id)
-values(50001, 5, 'Wonderful Course', 40999);
+values(50001, 'FIVE', 'Wonderful Course', 40999);
 
 Insert into STUDENT_COURSE(student_id, course_id)
 values
