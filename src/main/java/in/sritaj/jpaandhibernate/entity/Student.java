@@ -31,6 +31,9 @@ public class Student {
     @JoinTable(name = "STUDENT_COURSE", joinColumns = @JoinColumn(name = "STUDENT_ID"), inverseJoinColumns = @JoinColumn(name = "COURSE_ID"))
     List<Course> courses = new ArrayList<>();
 
+    @Embedded
+    private Address address;
+
     public Student(String name) {
         this.name = name;
     }
