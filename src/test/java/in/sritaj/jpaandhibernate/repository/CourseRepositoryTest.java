@@ -20,10 +20,11 @@ public class CourseRepositoryTest extends AbstractTestNGSpringContextTests {
 
     @Test(testName = "Validate findBy returns the specified course when the ID exists")
     public void validateFindByIDFetchesTheSpecifiedCourse() {
-        Course course = courseRepository.findById(40999L);
+        Course newCourse = courseRepository.save(new Course(fs.book().title()));
+        Course course = courseRepository.findById(newCourse.getId());
 
         Assert.assertNotNull(course);
-        Assert.assertEquals(course.getCourseName(), "Geography");
+        Assert.assertEquals(course.getCourseName(), newCourse.getCourseName());
 
     }
 
@@ -38,7 +39,8 @@ public class CourseRepositoryTest extends AbstractTestNGSpringContextTests {
     @DirtiesContext
     @Test(testName = "Validate Delete removes the specified course when the ID exists")
     public void validateDeletionOfTheSpecifiedCourse() {
-        String actualMessage = courseRepository.deleteCourse(40999L);
+        Course newCourse = courseRepository.save(new Course(fs.book().title()));
+        String actualMessage = courseRepository.deleteCourse(newCourse.getId());
 
         Assert.assertEquals(actualMessage, "Course removed");
 
@@ -126,11 +128,12 @@ public class CourseRepositoryTest extends AbstractTestNGSpringContextTests {
     @DirtiesContext
     @Test(testName = "Validate Soft Delete operation")
     public void validateSoftDeletionOfTheSpecifiedCourse() {
-        String actualMessage = courseRepository.deleteCourse(40999L);
+        Course newCourse = courseRepository.save(new Course(fs.book().title()));
+        String actualMessage = courseRepository.deleteCourse(newCourse.getId());
 
         Assert.assertEquals(actualMessage, "Course removed");
 
-        Course course = courseRepository.findById(40999L);
+        Course course = courseRepository.findById(newCourse.getId());
 
         Assert.assertNull(course);
 

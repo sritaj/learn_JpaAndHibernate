@@ -24,7 +24,8 @@ public class CourseSpringDataRepositoryTest extends AbstractTestNGSpringContextT
 
     @Test(testName = "Validate findBy response when the Course is Present")
     public void validateFindByIDResponseWhenCourseIsPresent() {
-        Optional<Course> courseOptional = courseSpringDataRepository.findById(40999L);
+        Course newCourse = courseSpringDataRepository.save(new Course(fs.book().title()));
+        Optional<Course> courseOptional = courseSpringDataRepository.findById(newCourse.getId());
         Assert.assertTrue(courseOptional.isPresent());
     }
 
@@ -93,10 +94,11 @@ public class CourseSpringDataRepositoryTest extends AbstractTestNGSpringContextT
 
     @Test(testName = "Validate fetching of Courses based on name")
     public void validateFindByName(){
-        List<Course> listOfCourses = courseSpringDataRepository.findByName("1Civil Science");
+        Course newCourse = courseSpringDataRepository.save(new Course("1Civil Science"));
+        List<Course> listOfCourses = courseSpringDataRepository.findByName(newCourse.getCourseName());
 
         Assert.assertNotNull(listOfCourses);
-        Assert.assertEquals(listOfCourses.get(0).getId(), 40992);
+        Assert.assertEquals(listOfCourses.get(0).getId(),  newCourse.getId());
     }
 
 }
