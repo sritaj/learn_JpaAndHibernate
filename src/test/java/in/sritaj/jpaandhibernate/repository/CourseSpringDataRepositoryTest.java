@@ -18,9 +18,9 @@ import java.util.Optional;
 public class CourseSpringDataRepositoryTest extends AbstractTestNGSpringContextTests {
 
     @Autowired
-    CourseSpringDataRepository courseSpringDataRepository;
+    private CourseSpringDataRepository courseSpringDataRepository;
 
-    Faker fs = new Faker();
+    private Faker fs = new Faker();
 
     @Test(testName = "Validate findBy response when the Course is Present")
     public void validateFindByIDResponseWhenCourseIsPresent() {

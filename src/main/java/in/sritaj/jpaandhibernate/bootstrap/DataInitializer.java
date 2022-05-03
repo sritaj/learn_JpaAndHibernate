@@ -21,22 +21,22 @@ import java.util.List;
 public class DataInitializer implements CommandLineRunner {
 
     @Autowired
-    PersonRepository personRepository;
+    private PersonRepository personRepository;
 
     @Autowired
-    CourseRepository courseRepository;
+    private CourseRepository courseRepository;
 
     @Autowired
-    StudentRepository studentRepository;
+    private StudentRepository studentRepository;
 
     @Autowired
-    PassportRepository passportRepository;
+    private PassportRepository passportRepository;
 
     @Autowired
-    ReviewRepository reviewRepository;
+    private ReviewRepository reviewRepository;
 
     @Autowired
-    EmployeeRepository employeeRepository;
+    private EmployeeRepository employeeRepository;
 
     Faker fs = new Faker();
 

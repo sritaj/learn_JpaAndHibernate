@@ -14,9 +14,9 @@ import org.testng.annotations.Test;
 public class CourseRepositoryTest extends AbstractTestNGSpringContextTests {
 
     @Autowired
-    CourseRepository courseRepository;
+    private CourseRepository courseRepository;
 
-    Faker fs = new Faker();
+    private Faker fs = new Faker();
 
     @Test(testName = "Validate findBy returns the specified course when the ID exists")
     public void validateFindByIDFetchesTheSpecifiedCourse() {

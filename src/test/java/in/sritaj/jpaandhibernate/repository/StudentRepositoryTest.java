@@ -13,9 +13,9 @@ import org.testng.annotations.Test;
 public class StudentRepositoryTest extends AbstractTestNGSpringContextTests {
 
     @Autowired
-    StudentRepository studentRepository;
+    private StudentRepository studentRepository;
 
-    Faker fs = new Faker();
+    private Faker fs = new Faker();
 
     @Test(testName = "Validate creation of Student based with Passport Details")
     public void validateStudentWithPassportDetails(){
