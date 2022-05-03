@@ -38,6 +38,9 @@ public class JPADataInitializer implements CommandLineRunner {
     @Autowired
     private EmployeeRepository employeeRepository;
 
+    @Autowired
+    private BookSpringDataRepository bookSpringDataRepository;
+
     Faker fs = new Faker();
 
     public JPADataInitializer(PersonRepository personRepository, CourseRepository courseRepository, StudentRepository studentRepository, PassportRepository passportRepository, ReviewRepository reviewRepository, EmployeeRepository employeeRepository) {
@@ -171,6 +174,10 @@ public class JPADataInitializer implements CommandLineRunner {
         result.forEach((S, K) -> System.out.println(S + " " + K));
 
         studentRepository.setStudentAddress(student.getId(), new Address("13th Street", "Texas"));
+
+        //Data Initialization for Book table
+        bookSpringDataRepository.save(new Book(fs.book().title(), fs.book().author(), fs.book().publisher()));
+        bookSpringDataRepository.save(new Book(fs.book().title(), fs.book().author(), fs.book().publisher()));
 
     }
 }
