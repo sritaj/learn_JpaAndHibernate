@@ -12,5 +12,5 @@ import java.util.List;
 @RepositoryRestResource(path = "courses")
 public interface CourseSpringDataRepository extends JpaRepository<Course, Long> {
 
-    List<Course> findByName(String name);
+     List<Course> findByName(String name);
 }
