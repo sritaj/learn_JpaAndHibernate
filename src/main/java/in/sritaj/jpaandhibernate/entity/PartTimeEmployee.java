@@ -15,12 +15,12 @@ import java.math.BigDecimal;
 @Getter
 @Setter
 @NoArgsConstructor
-public class PartTimEmployee extends Employee {
+public class PartTimeEmployee extends Employee {
 
     @Column(name = "hourly_wage")
     private BigDecimal hourlyWage;
 
-    public PartTimEmployee(String name, BigDecimal hourlyWage) {
+    public PartTimeEmployee(String name, BigDecimal hourlyWage) {
         super(name);
         this.hourlyWage = hourlyWage;
     }
