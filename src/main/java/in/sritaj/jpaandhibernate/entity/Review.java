@@ -21,7 +21,7 @@ public class Review {
     private Long id;
 
     @Column(nullable = false)
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     private Rating rating;
 
     private String description;
