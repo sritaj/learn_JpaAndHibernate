@@ -1,6 +1,6 @@
 package in.sritaj.jpaandhibernate.repository;
 
-import in.sritaj.jpaandhibernate.entity.Employee;
+import in.sritaj.jpaandhibernate.entity.inheritancemapping.joined.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 

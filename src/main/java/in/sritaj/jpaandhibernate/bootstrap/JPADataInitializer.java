@@ -2,6 +2,9 @@ package in.sritaj.jpaandhibernate.bootstrap;
 
 import com.github.javafaker.Faker;
 import in.sritaj.jpaandhibernate.entity.*;
+import in.sritaj.jpaandhibernate.entity.inheritancemapping.joined.Employee;
+import in.sritaj.jpaandhibernate.entity.inheritancemapping.joined.FullTimeEmployee;
+import in.sritaj.jpaandhibernate.entity.inheritancemapping.joined.PartTimeEmployee;
 import in.sritaj.jpaandhibernate.enums.Rating;
 import in.sritaj.jpaandhibernate.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -155,8 +158,8 @@ public class JPADataInitializer implements CommandLineRunner {
         details.forEach((S, K) -> System.out.println(S + " " + K));
 
         //Data Initialization for Employee table
-        Employee fullTimeEmployee = new FullTimeEmployee("Paul", new BigDecimal(155000));
-        Employee partTimeEmployee = new PartTimeEmployee("Logan", new BigDecimal(755));
+        Employee fullTimeEmployee = new FullTimeEmployee(fs.name().fullName(), new BigDecimal(155000));
+        Employee partTimeEmployee = new PartTimeEmployee(fs.name().fullName(), new BigDecimal(755));
 
         employeeRepository.insertEmployee(fullTimeEmployee);
         employeeRepository.insertEmployee(partTimeEmployee);
