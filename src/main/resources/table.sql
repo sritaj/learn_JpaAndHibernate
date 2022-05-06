@@ -68,6 +68,13 @@ description varchar(100),
 price decimal(8,3) 
 );
 
+create table author(
+id int PRIMARY KEY AUTO_INCREMENT,
+first_name varchar(20),
+last_name varchar(20),
+books_published int
+)
+
 create table book(
 id bigint PRIMARY KEY,
 title varchar (200),
