@@ -35,4 +35,10 @@ public interface AuthorSpringDataRepository extends CrudRepository<Author, Integ
     @Query("from Author")
     List<Author> findAllAuthors(Pageable pageable);
 
+    @Query(value = "select * from author", nativeQuery = true)
+    List<Author> findAllAuthorsNQ();
+
+    @Query(value = "select * from author where first_name = :firstName", nativeQuery = true)
+    List<Author> findAllAuthorsByFirstNameNQ(@Param("firstName") String firstName);
+
 }
