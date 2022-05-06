@@ -106,3 +106,9 @@ create table customer(
     zipcode varchar(20),
     country varchar(20)
 );
+create TABLE image(
+	id BIGINT NOT NULL,
+	name varchar(100) NOT NULL,
+	data BLOB NOT NULL,
+	PRIMARY KEY(id)
+);
