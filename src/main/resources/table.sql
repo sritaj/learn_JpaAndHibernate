@@ -94,3 +94,15 @@ amount decimal(8,3) ,
 card_number varchar(20),
 check_number varchar(20)
 );
+
+create table bike(
+id int PRIMARY KEY,
+amount decimal(8,3),
+bike varchar(20)
+);
+
+create table car(
+id int PRIMARY KEY,
+amount decimal(8,3),
+car varchar(20)
+);
