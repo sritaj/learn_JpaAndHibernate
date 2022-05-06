@@ -2,6 +2,7 @@ package in.sritaj.jpaandhibernate.bootstrap;
 
 import com.github.javafaker.Faker;
 import in.sritaj.jpaandhibernate.entity.*;
+import in.sritaj.jpaandhibernate.entity.idautogeneration.Book;
 import in.sritaj.jpaandhibernate.entity.inheritancemapping.joined.Employee;
 import in.sritaj.jpaandhibernate.entity.inheritancemapping.joined.FullTimeEmployee;
 import in.sritaj.jpaandhibernate.entity.inheritancemapping.joined.PartTimeEmployee;
