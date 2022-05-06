@@ -14,7 +14,7 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorColumn(name = "Employee_Type")
+@DiscriminatorColumn(name = "employee_type")
 public abstract class Employee {
 
     @Id
