@@ -52,7 +52,7 @@ public class AuthorSpringDataRepositoryTest extends AbstractTestNGSpringContextT
     public void findAllAuthorsWithFirstNameUsingJPQLQuery() {
         final String firstName = "S";
         authorSpringDataRepository.save(new Author(firstName, "Patel", 3));
-        List<Author> authors = authorSpringDataRepository.findAllAuthorsByFirstName("S");
+        List<Author> authors = authorSpringDataRepository.findAllAuthorsByFirstName(firstName);
 
         Assert.assertNotNull(authors);
         Assert.assertEquals(authors.get(0).getFirstName(), firstName);
@@ -104,6 +104,25 @@ public class AuthorSpringDataRepositoryTest extends AbstractTestNGSpringContextT
         Assert.assertTrue(checkAuthor.size() == 3);
         Assert.assertEquals(checkAuthor.get(0), "C");
 
+    }
+
+    @Test(testName = "Validate find all Authors using Native Query")
+    public void findAllAuthorsUsingNativeQuery() {
+
+        List<Author> authors = authorSpringDataRepository.findAllAuthorsNQ();
+        Assert.assertNotNull(authors);
+        Assert.assertTrue(authors.size() > 0);
+    }
+
+    @Test(testName = "Validate find all Authors using Native Query")
+    public void findAllAuthorsUsingFirstUsingNativeQuery() {
+
+        final String firstName = "Q";
+        authorSpringDataRepository.save(new Author(firstName, "Patel", 3));
+        List<Author> authors = authorSpringDataRepository.findAllAuthorsByFirstNameNQ(firstName);
+
+        Assert.assertNotNull(authors);
+        Assert.assertEquals(authors.get(0).getFirstName(), firstName);
     }
 
     @AfterMethod
