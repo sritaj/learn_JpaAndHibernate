@@ -164,6 +164,7 @@ public class JPADataInitializer implements CommandLineRunner {
         employeeRepository.insertEmployee(fullTimeEmployee);
         employeeRepository.insertEmployee(partTimeEmployee);
 
+        //Data Initialization for Course and Student table
         List<Course> courseWithoutStudents = courseRepository.fetchCoursesWhereStudentsAreNotMapped();
         courseWithoutStudents.forEach(System.out::println);
 
