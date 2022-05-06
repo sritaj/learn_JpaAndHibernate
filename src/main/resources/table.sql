@@ -86,3 +86,11 @@ create table id_gen(
 gen_name varchar(60) PRIMARY KEY,
 gen_val int(20)
 );
+
+create table payment(
+id int PRIMARY KEY,
+payment_mode varchar(2),
+amount decimal(8,3) ,
+card_number varchar(20),
+check_number varchar(20)
+);
