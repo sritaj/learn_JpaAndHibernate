@@ -1,4 +1,4 @@
-package in.sritaj.jpaandhibernate.repository;
+package in.sritaj.jpaandhibernate.repository.inheritancemapping.singletable;
 
 import in.sritaj.jpaandhibernate.entity.inheritancemapping.singletable.Payment;
 import org.springframework.data.jpa.repository.Query;

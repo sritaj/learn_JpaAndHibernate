@@ -14,12 +14,12 @@ import javax.persistence.Entity;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Car extends Transport{
+public class Car extends Transport {
 
     @Column(nullable = false)
     private String car;
 
-    public Car (double amount, String car){
+    public Car(double amount, String car) {
         super(amount);
         this.car = car;
     }

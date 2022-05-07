@@ -21,7 +21,7 @@ import java.util.List;
 @Setter
 @Entity
 @NoArgsConstructor
-@SQLDelete(sql="update course set is_deleted=true where id =?")
+@SQLDelete(sql = "update course set is_deleted=true where id =?")
 @Where(clause = "is_deleted=false")
 public class Course {
 

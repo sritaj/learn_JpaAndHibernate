@@ -8,6 +8,8 @@ import in.sritaj.jpaandhibernate.entity.inheritancemapping.joined.FullTimeEmploy
 import in.sritaj.jpaandhibernate.entity.inheritancemapping.joined.PartTimeEmployee;
 import in.sritaj.jpaandhibernate.enums.Rating;
 import in.sritaj.jpaandhibernate.repository.*;
+import in.sritaj.jpaandhibernate.repository.idautogeneration.BookSpringDataRepository;
+import in.sritaj.jpaandhibernate.repository.inheritancemapping.joined.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;

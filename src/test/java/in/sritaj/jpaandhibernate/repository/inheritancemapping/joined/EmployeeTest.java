@@ -1,4 +1,4 @@
-package in.sritaj.jpaandhibernate.repository;
+package in.sritaj.jpaandhibernate.repository.inheritancemapping.joined;
 
 import com.github.javafaker.Faker;
 import in.sritaj.jpaandhibernate.entity.inheritancemapping.joined.Employee;

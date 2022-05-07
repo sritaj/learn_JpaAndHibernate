@@ -1,4 +1,4 @@
-package in.sritaj.jpaandhibernate.repository;
+package in.sritaj.jpaandhibernate.repository.inheritancemapping.tableperclass;
 
 import in.sritaj.jpaandhibernate.entity.inheritancemapping.tableperclass.Transport;
 import org.springframework.data.repository.CrudRepository;

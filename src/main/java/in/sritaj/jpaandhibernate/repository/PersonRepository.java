@@ -77,7 +77,7 @@ public class PersonRepository {
      *
      * @return List<People> - list of people
      */
-    public List<Person> findAll(){
+    public List<Person> findAll() {
         TypedQuery<Person> namedQuery = entityManager.createNamedQuery("find_all_persons", Person.class);
         return namedQuery.getResultList();
     }

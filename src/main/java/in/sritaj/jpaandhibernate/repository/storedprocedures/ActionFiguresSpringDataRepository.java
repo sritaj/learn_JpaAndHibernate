@@ -1,4 +1,4 @@
-package in.sritaj.jpaandhibernate.repository;
+package in.sritaj.jpaandhibernate.repository.storedprocedures;
 
 import in.sritaj.jpaandhibernate.entity.storedprocedures.ActionFigures;
 import org.springframework.data.jpa.repository.Query;

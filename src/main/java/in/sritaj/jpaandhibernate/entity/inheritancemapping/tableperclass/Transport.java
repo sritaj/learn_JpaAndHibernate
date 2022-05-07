@@ -22,7 +22,7 @@ public abstract class Transport {
 
     private double amount;
 
-    public Transport(double amount){
+    public Transport(double amount) {
         this.amount = amount;
     }
 

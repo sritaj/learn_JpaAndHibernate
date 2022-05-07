@@ -18,7 +18,7 @@ public class StudentRepositoryTest extends AbstractTestNGSpringContextTests {
     private Faker fs = new Faker();
 
     @Test(testName = "Validate creation of Student based with Passport Details")
-    public void validateStudentWithPassportDetails(){
+    public void validateStudentWithPassportDetails() {
         Passport passport = new Passport(fs.idNumber().ssnValid());
         String extractPassportID = passport.getPassportID();
         Student student = new Student(fs.name().fullName());

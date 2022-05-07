@@ -21,7 +21,7 @@ public class Cheque extends Payment {
     @Column(name = "cheque_number", nullable = false)
     private String chequeNumber;
 
-    public Cheque(double amount, String chequeNumber){
+    public Cheque(double amount, String chequeNumber) {
         super(amount);
         this.chequeNumber = chequeNumber;
     }

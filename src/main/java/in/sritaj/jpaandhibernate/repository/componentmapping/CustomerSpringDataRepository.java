@@ -1,4 +1,4 @@
-package in.sritaj.jpaandhibernate.repository;
+package in.sritaj.jpaandhibernate.repository.componentmapping;
 
 import in.sritaj.jpaandhibernate.entity.componentmapping.Customer;
 import org.springframework.data.repository.CrudRepository;

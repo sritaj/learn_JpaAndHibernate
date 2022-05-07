@@ -1,4 +1,4 @@
-package in.sritaj.jpaandhibernate.repository;
+package in.sritaj.jpaandhibernate.repository.storedprocedures;
 
 import com.github.javafaker.Faker;
 import in.sritaj.jpaandhibernate.entity.storedprocedures.ActionFigures;
