@@ -107,8 +107,14 @@ create table customer(
     country varchar(20)
 );
 create TABLE image(
-	id BIGINT NOT NULL,
-	name varchar(100) NOT NULL,
-	data BLOB NOT NULL,
-	PRIMARY KEY(id)
+    id BIGINT NOT NULL,
+    name varchar(100) NOT NULL,
+    data BLOB NOT NULL,
+    PRIMARY KEY(id)
+);
+create table actionfigures(
+    id int PRIMARY KEY auto_increment not null,
+    name varchar(20) not null,
+    description varchar(100),
+    price decimal(8, 3)
 );
