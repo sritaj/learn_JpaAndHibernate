@@ -1,7 +1,8 @@
-package in.sritaj.jpaandhibernate.repository;
+package in.sritaj.jpaandhibernate.repository.jpqlandnativequeries;
 
 import com.github.javafaker.Faker;
-import in.sritaj.jpaandhibernate.entity.Author;
+import in.sritaj.jpaandhibernate.entity.jpqlandnativequeries.Author;
+import in.sritaj.jpaandhibernate.repository.jpqlandnativequeries.AuthorSpringDataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.PageRequest;

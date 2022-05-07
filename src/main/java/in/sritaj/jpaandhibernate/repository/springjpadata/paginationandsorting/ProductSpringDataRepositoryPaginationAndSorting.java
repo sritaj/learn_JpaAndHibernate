@@ -1,6 +1,6 @@
-package in.sritaj.jpaandhibernate.repository;
+package in.sritaj.jpaandhibernate.repository.springjpadata.paginationandsorting;
 
-import in.sritaj.jpaandhibernate.entity.Product;
+import in.sritaj.jpaandhibernate.entity.springjpadata.Product;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.PagingAndSortingRepository;
 

@@ -1,7 +1,7 @@
-package in.sritaj.jpaandhibernate.repository;
+package in.sritaj.jpaandhibernate.repository.springjpadata.paginationandsorting;
 
 import com.github.javafaker.Faker;
-import in.sritaj.jpaandhibernate.entity.Product;
+import in.sritaj.jpaandhibernate.entity.springjpadata.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;

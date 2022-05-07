@@ -1,6 +1,6 @@
-package in.sritaj.jpaandhibernate.repository;
+package in.sritaj.jpaandhibernate.repository.jpqlandnativequeries;
 
-import in.sritaj.jpaandhibernate.entity.Author;
+import in.sritaj.jpaandhibernate.entity.jpqlandnativequeries.Author;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

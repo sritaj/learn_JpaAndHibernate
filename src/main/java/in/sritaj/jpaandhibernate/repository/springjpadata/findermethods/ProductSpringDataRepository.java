@@ -1,6 +1,6 @@
-package in.sritaj.jpaandhibernate.repository;
+package in.sritaj.jpaandhibernate.repository.springjpadata.findermethods;
 
-import in.sritaj.jpaandhibernate.entity.Product;
+import in.sritaj.jpaandhibernate.entity.springjpadata.Product;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
