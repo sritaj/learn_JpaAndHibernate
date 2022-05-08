@@ -1,4 +1,4 @@
-package in.sritaj.jpaandhibernate.entity;
+package in.sritaj.jpaandhibernate.entity.softdelete;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

@@ -1,6 +1,6 @@
 package in.sritaj.jpaandhibernate;
 
-import in.sritaj.jpaandhibernate.entity.Person;
+import in.sritaj.jpaandhibernate.entity.softdelete.Person;
 import in.sritaj.jpaandhibernate.jdbcRepository.PersonJdbcDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;

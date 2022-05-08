@@ -1,6 +1,6 @@
-package in.sritaj.jpaandhibernate.repository;
+package in.sritaj.jpaandhibernate.repository.softdelete;
 
-import in.sritaj.jpaandhibernate.entity.Person;
+import in.sritaj.jpaandhibernate.entity.softdelete.Person;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
