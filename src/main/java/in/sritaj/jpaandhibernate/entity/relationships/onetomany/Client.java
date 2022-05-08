@@ -36,6 +36,11 @@ public class Client {
         this.phoneNumbers = phoneNumbers;
     }
 
+    /**
+     * Method to add Phone Number
+     *
+     * @param number - Phone Number entity
+     */
     public void addPhoneNumber(PhoneNumber number) {
         if (phoneNumbers == null) {
             phoneNumbers = new HashSet<>();
