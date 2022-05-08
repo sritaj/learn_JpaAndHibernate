@@ -118,3 +118,14 @@ create table actionfigures(
     description varchar(100),
     price decimal(8, 3)
 );
+create table client (
+    id int PRIMARY KEY AUTO_INCREMENT,
+    name varchar (20) not null
+);
+create table phone_number(
+    id int PRIMARY KEY AUTO_INCREMENT,
+    client_id int,
+    number varchar(20) not null,
+    type varchar(20),
+    FOREIGN KEY (client_id) REFERENCES client(id)
+)
