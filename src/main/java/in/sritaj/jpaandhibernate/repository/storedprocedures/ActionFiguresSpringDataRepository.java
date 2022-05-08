@@ -6,6 +6,9 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
+/**
+ * ActionFiguresSpringDataRepository interface for extending CrudRepository for CRUD operations on ActionFigure Entity using SpringJPA
+ */
 public interface ActionFiguresSpringDataRepository extends CrudRepository<ActionFigures, Integer> {
 
     @Query(value = "CALL GetAllActionFigures", nativeQuery = true)

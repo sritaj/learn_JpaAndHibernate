@@ -6,6 +6,9 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
+/**
+ * ActionFigures Entity defining the Table structure and relevant mappings with dependent entities
+ */
 @Getter
 @Setter
 @NoArgsConstructor
