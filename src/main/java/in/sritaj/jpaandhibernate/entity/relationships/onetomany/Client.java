@@ -8,6 +8,9 @@ import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Client Entity defining the Table structure and relevant mappings with dependent entities
+ */
 @Getter
 @Setter
 @NoArgsConstructor
