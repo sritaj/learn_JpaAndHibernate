@@ -6,10 +6,12 @@ import in.sritaj.jpaandhibernate.entity.idautogeneration.Book;
 import in.sritaj.jpaandhibernate.entity.inheritancemapping.joined.Employee;
 import in.sritaj.jpaandhibernate.entity.inheritancemapping.joined.FullTimeEmployee;
 import in.sritaj.jpaandhibernate.entity.inheritancemapping.joined.PartTimeEmployee;
+import in.sritaj.jpaandhibernate.entity.softdelete.Person;
 import in.sritaj.jpaandhibernate.enums.Rating;
 import in.sritaj.jpaandhibernate.repository.*;
 import in.sritaj.jpaandhibernate.repository.idautogeneration.BookSpringDataRepository;
 import in.sritaj.jpaandhibernate.repository.inheritancemapping.joined.EmployeeRepository;
+import in.sritaj.jpaandhibernate.repository.softdelete.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -65,6 +67,8 @@ public class JPADataInitializer implements CommandLineRunner {
      */
     @Override
     public void run(String... args) throws Exception {
+
+        /*
 
         //Data Initialization for People class
         Person newPerson = personRepository.insert(new Person(fs.name().fullName(), fs.address().cityName(), new Date()));
@@ -185,6 +189,8 @@ public class JPADataInitializer implements CommandLineRunner {
         //Data Initialization for Book table
         bookSpringDataRepository.save(new Book(fs.book().title(), fs.book().author(), fs.book().publisher()));
         bookSpringDataRepository.save(new Book(fs.book().title(), fs.book().author(), fs.book().publisher()));
+
+        */
 
     }
 }
