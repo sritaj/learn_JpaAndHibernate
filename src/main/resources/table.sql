@@ -173,3 +173,10 @@ create table license(
     person_id int,
     FOREIGN KEY (driver_id) REFERENCES driver(id)
 );
+-- TABLE for Transaction Management Example --
+create table bank_account (
+    accno int PRIMARY KEY AUTO_INCREMENT,
+    lastname varchar(25),
+    firstname varchar(25) not null,
+    bal int
+)
