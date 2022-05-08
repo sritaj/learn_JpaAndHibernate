@@ -3,7 +3,6 @@ package in.sritaj.jpaandhibernate.repository.relationships.manytomany;
 import com.github.javafaker.Faker;
 import in.sritaj.jpaandhibernate.entity.relationships.manytomany.Programmer;
 import in.sritaj.jpaandhibernate.entity.relationships.manytomany.Project;
-import in.sritaj.jpaandhibernate.entity.relationships.onetomany.PhoneNumber;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
@@ -45,7 +44,7 @@ public class ProgrammerAndProjectSpringDataRepositoryTest extends AbstractTestNG
     }
 
     @Test(testName = "Validate creation of Programmer and Project")
-    public void validateCreationOfProgrammerAndProject(){
+    public void validateCreationOfProgrammerAndProject() {
 
         Programmer newlyCreated = programmerSprintDataRepository.save(programmer);
 
@@ -54,7 +53,7 @@ public class ProgrammerAndProjectSpringDataRepositoryTest extends AbstractTestNG
     }
 
     @Test(testName = "Validate retrieval of Programmer and Project")
-    public void validateRetrievalOfProgrammerAndCProject(){
+    public void validateRetrievalOfProgrammerAndCProject() {
 
         Programmer newlyCreated = programmerSprintDataRepository.save(programmer);
 
@@ -69,7 +68,7 @@ public class ProgrammerAndProjectSpringDataRepositoryTest extends AbstractTestNG
     }
 
     @AfterMethod
-    public void cleanDB(){
+    public void cleanDB() {
         programmerSprintDataRepository.deleteAll();
     }
 }
