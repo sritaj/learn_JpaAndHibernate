@@ -1,3 +1,4 @@
+-- TABLES for Showcasing Relationships and JPA-HIBERNATE Examples --
 create table course (
     id bigint auto_increment not null,
     course_name varchar(255) not null,
@@ -6,34 +7,9 @@ create table course (
     last_updated_date timestamp,
     primary key (id)
 );
-create table employee (
-    employee_type varchar(31) not null,
-    id bigint auto_increment not null,
-    name varchar(255) not null,
-    primary key (id)
-);
-create table full_time_employee (
-    salary decimal(19, 2),
-    id bigint auto_increment not null,
-    primary key (id),
-    foreign key (id) references employee(id) ON DELETE CASCADE
-);
-create table part_time_employee (
-    hourly_wage decimal(19, 2),
-    id bigint auto_increment not null,
-    primary key (id),
-    foreign key (id) references employee(id) ON DELETE CASCADE
-);
 create table passport (
     id bigint auto_increment not null,
     passport_id varchar(255) not null unique,
-    primary key (id)
-);
-create table person (
-    id integer auto_increment not null,
-    birth_date timestamp,
-    location varchar(255),
-    name varchar(255),
     primary key (id)
 );
 create table review (
@@ -59,18 +35,30 @@ create table student_course (
     foreign key (student_id) references student(id),
     foreign key (course_id) references course(id)
 );
+-- TABLE for Soft Delete Example --
+create table person (
+    id integer auto_increment not null,
+    birth_date timestamp,
+    location varchar(255),
+    name varchar(255),
+    primary key (id)
+);
+-- TABLE for Spring JPA Data Example --
 create table product(
     id int PRIMARY KEY auto_increment not null,
     name varchar(20),
     description varchar(100),
     price decimal(8, 3)
 );
+-- TABLE for JPQL and Native Queries Example --
 create table author(
     id int PRIMARY KEY AUTO_INCREMENT,
     first_name varchar(20),
     last_name varchar(20),
     books_published int
-) create table book(
+);
+-- TABLE for Custom ID Generation Example --
+create table book(
     id bigint PRIMARY KEY,
     title varchar (200),
     author varchar (200),
@@ -80,6 +68,7 @@ create table id_gen(
     gen_name varchar(60) PRIMARY KEY,
     gen_val int(20)
 );
+-- TABLE for Inheritance Mapping : SINGLE TABLE Example --
 create table payment(
     id int PRIMARY KEY,
     payment_mode varchar(2),
@@ -87,6 +76,7 @@ create table payment(
     card_number varchar(20),
     check_number varchar(20)
 );
+-- TABLES for Inheritance Mapping : TABLE PER CLASS Example --
 create table bike(
     id int PRIMARY KEY,
     amount decimal(8, 3),
@@ -97,6 +87,26 @@ create table car(
     amount decimal(8, 3),
     car varchar(20)
 );
+-- TABLES for Inheritance Mapping : JOINED Example --
+create table employee (
+    employee_type varchar(31) not null,
+    id bigint auto_increment not null,
+    name varchar(255) not null,
+    primary key (id)
+);
+create table full_time_employee (
+    salary decimal(19, 2),
+    id bigint auto_increment not null,
+    primary key (id),
+    foreign key (id) references employee(id) ON DELETE CASCADE
+);
+create table part_time_employee (
+    hourly_wage decimal(19, 2),
+    id bigint auto_increment not null,
+    primary key (id),
+    foreign key (id) references employee(id) ON DELETE CASCADE
+);
+-- TABLE for Component Mapping Example --
 create table customer(
     id int not null primary key,
     name varchar(20),
@@ -106,18 +116,21 @@ create table customer(
     zipcode varchar(20),
     country varchar(20)
 );
+-- TABLE for File Saving and Retrieval Example --
 create TABLE image(
     id BIGINT NOT NULL,
     name varchar(100) NOT NULL,
     data BLOB NOT NULL,
     PRIMARY KEY(id)
 );
+-- TABLE for Stored Procedure Example --
 create table actionfigures(
     id int PRIMARY KEY auto_increment not null,
     name varchar(20) not null,
     description varchar(100),
     price decimal(8, 3)
 );
+-- TABLES for One to Many Mapping Example --
 create table client (
     id int PRIMARY KEY AUTO_INCREMENT,
     name varchar (20) not null
@@ -128,4 +141,35 @@ create table phone_number(
     number varchar(20) not null,
     type varchar(20),
     FOREIGN KEY (client_id) REFERENCES client(id)
-)
+);
+-- TABLES for Many to Many Mapping Example --
+create table programmer(
+    id int PRIMARY KEY AUTO_INCREMENT,
+    name varchar(20) not null,
+    salary int
+);
+create table project(
+    id int PRIMARY KEY AUTO_INCREMENT,
+    name varchar(20) not null
+);
+create table (
+    programmer_id int,
+    project_id int,
+    FOREIGN KEY (programmer_id) REFERENCES programmer(id),
+    FOREIGN KEY (project_id) REFERENCES project(id)
+);
+-- TABLES for One to One Mapping Example --
+create table driver(
+    id int PRIMARY KEY AUTO_INCREMENT,
+    first_name varchar(20) not null,
+    last_name varchar(20),
+    age int
+);
+create table license(
+    id int PRIMARY KEY AUTO_INCREMENT,
+    type varchar(20) not null,
+    valid_from date,
+    valid_to date,
+    person_id int,
+    FOREIGN KEY (driver_id) REFERENCES driver(id)
+);
