@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -41,7 +42,7 @@ public class StaffSpringDataRepositoryTest extends AbstractTestNGSpringContextTe
 
     }
 
-    @BeforeTest
+    @AfterMethod
     public void clearDB() {
         staffSpringDataRepository.deleteAll();
     }
