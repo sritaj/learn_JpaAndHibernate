@@ -1,4 +1,4 @@
-package in.sritaj.jpaandhibernate.entity.idautogeneration;
+package in.sritaj.jpaandhibernate.entity.customids.idautogeneration;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

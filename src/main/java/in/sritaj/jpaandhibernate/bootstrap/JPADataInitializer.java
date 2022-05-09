@@ -1,26 +1,13 @@
 package in.sritaj.jpaandhibernate.bootstrap;
 
 import com.github.javafaker.Faker;
-import in.sritaj.jpaandhibernate.entity.*;
-import in.sritaj.jpaandhibernate.entity.idautogeneration.Book;
-import in.sritaj.jpaandhibernate.entity.inheritancemapping.joined.Employee;
-import in.sritaj.jpaandhibernate.entity.inheritancemapping.joined.FullTimeEmployee;
-import in.sritaj.jpaandhibernate.entity.inheritancemapping.joined.PartTimeEmployee;
-import in.sritaj.jpaandhibernate.entity.softdelete.Person;
-import in.sritaj.jpaandhibernate.enums.Rating;
 import in.sritaj.jpaandhibernate.repository.*;
-import in.sritaj.jpaandhibernate.repository.idautogeneration.BookSpringDataRepository;
+import in.sritaj.jpaandhibernate.repository.customids.idautogeneration.BookSpringDataRepository;
 import in.sritaj.jpaandhibernate.repository.inheritancemapping.joined.EmployeeRepository;
 import in.sritaj.jpaandhibernate.repository.softdelete.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
 
 /**
  * DataInitializer class for initializing data for running the Application

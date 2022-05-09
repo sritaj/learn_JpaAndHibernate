@@ -1,7 +1,7 @@
-package in.sritaj.jpaandhibernate.repository.compositekeys;
+package in.sritaj.jpaandhibernate.repository.customids.compositekeys;
 
-import in.sritaj.jpaandhibernate.entity.compositekeys.Staff;
-import in.sritaj.jpaandhibernate.entity.compositekeys.StaffID;
+import in.sritaj.jpaandhibernate.entity.customids.compositekeys.Staff;
+import in.sritaj.jpaandhibernate.entity.customids.compositekeys.StaffID;
 import org.springframework.data.repository.CrudRepository;
 
 /**

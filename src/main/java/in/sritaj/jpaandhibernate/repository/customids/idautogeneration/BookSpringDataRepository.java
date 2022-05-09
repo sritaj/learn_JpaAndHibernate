@@ -1,6 +1,6 @@
-package in.sritaj.jpaandhibernate.repository.idautogeneration;
+package in.sritaj.jpaandhibernate.repository.customids.idautogeneration;
 
-import in.sritaj.jpaandhibernate.entity.idautogeneration.Book;
+import in.sritaj.jpaandhibernate.entity.customids.idautogeneration.Book;
 import org.springframework.data.repository.CrudRepository;
 
 /**

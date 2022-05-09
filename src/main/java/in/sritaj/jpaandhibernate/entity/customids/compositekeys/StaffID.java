@@ -1,4 +1,4 @@
-package in.sritaj.jpaandhibernate.entity.compositekeys;
+package in.sritaj.jpaandhibernate.entity.customids.compositekeys;
 
 import lombok.Getter;
 import lombok.Setter;
