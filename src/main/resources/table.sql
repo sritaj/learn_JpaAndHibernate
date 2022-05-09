@@ -179,4 +179,18 @@ create table bank_account (
     lastname varchar(25),
     firstname varchar(25) not null,
     bal int
-)
+);
+-- TABLE for Composite Key ID Example --
+CREATE TABLE staff (
+    id int NOT NULL,
+    email varchar(255) NOT NULL,
+    name varchar(255) NOT NULL,
+    PRIMARY KEY (id, email)
+);
+-- TABLE for Composite Key ID Embedded Approach Example --
+CREATE TABLE pilot (
+    id int NOT NULL,
+    email varchar(255) NOT NULL,
+    name varchar(255) NOT NULL,
+    PRIMARY KEY (id, email)
+);
