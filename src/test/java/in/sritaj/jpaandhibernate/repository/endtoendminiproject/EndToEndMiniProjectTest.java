@@ -94,7 +94,8 @@ public class EndToEndMiniProjectTest extends AbstractTestNGSpringContextTests {
         appointment.setPatient(insertedPatient);
         appointment.setDoctor(insertedDoctor);
 
-        appointmentSpringDataRepository.save(appointment);
+        Appointment createdAppointment = appointmentSpringDataRepository.save(appointment);
+        Assert.assertNotNull(createdAppointment);
     }
 
     @AfterTest
