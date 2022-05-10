@@ -1,6 +1,5 @@
 package in.sritaj.jpaandhibernate.entity.relationships.manytomany;
 
-import in.sritaj.jpaandhibernate.entity.relationships.onetomany.PhoneNumber;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -46,7 +45,7 @@ public class Programmer {
     /**
      * Method to add Project
      *
-     * @param project - project entity
+     * @param project       - project entity
      * @param programmerSet - Programmer Entities Set
      */
     public void addProject(Project project, Set<Programmer> programmerSet) {

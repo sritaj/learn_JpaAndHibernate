@@ -2,7 +2,6 @@ package in.sritaj.jpaandhibernate.repository.entitymanager;
 
 import com.github.javafaker.Faker;
 import in.sritaj.jpaandhibernate.entity.entitymanager.Course;
-import in.sritaj.jpaandhibernate.repository.entitymanager.CourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.dao.DataIntegrityViolationException;

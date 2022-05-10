@@ -3,7 +3,6 @@ package in.sritaj.jpaandhibernate.repository.entitymanager;
 import com.github.javafaker.Faker;
 import in.sritaj.jpaandhibernate.entity.entitymanager.Passport;
 import in.sritaj.jpaandhibernate.entity.entitymanager.Student;
-import in.sritaj.jpaandhibernate.repository.entitymanager.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
