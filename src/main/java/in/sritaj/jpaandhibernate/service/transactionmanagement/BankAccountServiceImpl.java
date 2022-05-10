@@ -9,6 +9,9 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.List;
 
+/**
+ * BankAccountServiceImpl class extending BankAccountService interface for defining the Business Logics
+ */
 @Service
 public class BankAccountServiceImpl implements BankAccountService {
 

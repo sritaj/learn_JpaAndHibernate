@@ -4,6 +4,9 @@ import in.sritaj.jpaandhibernate.entity.transactionmanagement.BankAccount;
 
 import java.util.List;
 
+/**
+ * BankAccountService interface with abstract methods for BankAccount operations
+ */
 public interface BankAccountService {
 
     List<BankAccount> transfer(int accountOneBalance, int accountTwoBalance, int amountToTransfer);
