@@ -203,19 +203,19 @@ create table patient(
     provider_name varchar(30),
     copay decimal(10, 5)
 );
- create table doctor(
+create table doctor(
     id int PRIMARY KEY AUTO_INCREMENT,
     first_name varchar (20) not null,
     last_name varchar(30),
     speciality varchar(30)
 );
- create table patients_doctors(
+create table patients_doctors(
     patient_id int,
     doctor_id int,
     FOREIGN KEY (patient_id) REFERENCES patient(id) ON DELETE CASCADE,
     FOREIGN KEY (doctor_id) REFERENCES doctor(id) ON DELETE CASCADE
 );
- create table appointment(
+create table appointment(
     id int PRIMARY KEY AUTO_INCREMENT,
     patient_id int,
     doctor_id int,
@@ -225,4 +225,26 @@ create table patient(
     reason varchar(200),
     FOREIGN KEY (patient_id) REFERENCES patient(id) ON DELETE CASCADE,
     FOREIGN KEY (doctor_id) REFERENCES doctor(id) ON DELETE CASCADE
-)
+);
+-- TABLES for REST APIs Example --
+create table user_account(
+    id int AUTO_INCREMENT PRIMARY KEY,
+    user_name varchar(20) not null,
+    password varchar(20),
+    age int,
+    email varchar(40),
+    gender varchar(10),
+    phone_number varchar(10),
+    city varchar(20),
+    country varchar(20)
+);
+create table interest(
+    id int AUTO_INCREMENT PRIMARY KEY,
+    likes varchar(100),
+    dislikes varchar(100),
+    hobbies varchar(100),
+    profile_url varchar(60),
+    about varchar(200),
+    user_id int,
+    FOREIGN KEY (user_id) REFERENCES user_account(id) on delete cascade
+);
