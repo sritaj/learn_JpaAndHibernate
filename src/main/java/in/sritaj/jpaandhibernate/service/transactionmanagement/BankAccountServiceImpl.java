@@ -20,6 +20,14 @@ public class BankAccountServiceImpl implements BankAccountService {
 
     private Faker fs = new Faker();
 
+    /**
+     * Method to transfer balance from One Account to Other Account
+     *
+     * @param accountOneBalance - balance for Account to be deducted
+     * @param accountTwoBalance - balance for Account to be debited
+     * @param amountToTransfer  - amount to be deducted
+     * @return List - Details of deducted and debited account
+     */
     @Override
     @Transactional
     public List<BankAccount> transfer(int accountOneBalance, int accountTwoBalance, int amountToTransfer) {
@@ -42,6 +50,13 @@ public class BankAccountServiceImpl implements BankAccountService {
 
     }
 
+    /**
+     * Method to transfer balance from One Account to Other Account with Exception to halt the execution in between
+     *
+     * @param accountOne       - Account from which amount to be deducted
+     * @param accountTwo       - Account for which amount to be debited
+     * @param amountToTransfer - amount to be deducted
+     */
     @Override
     @Transactional
     public void transferWithException(BankAccount accountOne, BankAccount accountTwo, int amountToTransfer) {
