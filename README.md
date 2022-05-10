@@ -34,6 +34,7 @@ libraries
 | Softdelete                                                           | ***softdelete*** - package containing the entities, repository and test (segregated at entity, repository and test layer)
 | Stored procedures                                                    | ***storedprocedures*** - package containing the entities, repository and test (segregated at entity, repository and test layer)                                             |
 | Transaction Management                                               | ***transactionmanagement*** - package containing the entities, repository, service and test (segregated at entity, repository, service and test layer)                                            |
+| REST APIs for CRUD operations                                        | ***restfulapis*** - package containing the entities, repository, controller and test (segregated at entity, repository, controller and test layer)
 | MongoDB CRUD operations                                              | ***mongodb*** - package containing the entities, repository and test (segregated at entity, repository and test layer)
 | H2 Database and MySQL Database                                       | ***application.properties*** - Configurations for H2 and MySQL Databases |
 | ENUM to set Data in the Column                                       | ***enums*** - package containing ENUM that is used with Rating entity(entitymanager package) and relevant Test methods
