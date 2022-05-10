@@ -248,3 +248,12 @@ create table interest(
     user_id int,
     FOREIGN KEY (user_id) REFERENCES user_account(id) on delete cascade
 );
+-- TABLES for 2nd Level Caching using EhCache Example --
+create table foo(
+    id int AUTO_INCREMENT PRIMARY KEY,
+    name varchar(20) not null
+);
+create table bar(
+    id int AUTO_INCREMENT PRIMARY KEY,
+    name varchar(20) not null
+);
