@@ -1,4 +1,4 @@
-package in.sritaj.jpaandhibernate.entity;
+package in.sritaj.jpaandhibernate.entity.entitymanager;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;

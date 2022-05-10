@@ -1,6 +1,6 @@
-package in.sritaj.jpaandhibernate.repository;
+package in.sritaj.jpaandhibernate.repository.entitymanager;
 
-import in.sritaj.jpaandhibernate.entity.Course;
+import in.sritaj.jpaandhibernate.entity.entitymanager.Course;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 

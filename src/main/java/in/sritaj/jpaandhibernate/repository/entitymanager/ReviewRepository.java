@@ -1,7 +1,7 @@
-package in.sritaj.jpaandhibernate.repository;
+package in.sritaj.jpaandhibernate.repository.entitymanager;
 
-import in.sritaj.jpaandhibernate.entity.Course;
-import in.sritaj.jpaandhibernate.entity.Review;
+import in.sritaj.jpaandhibernate.entity.entitymanager.Course;
+import in.sritaj.jpaandhibernate.entity.entitymanager.Review;
 import in.sritaj.jpaandhibernate.enums.Rating;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;

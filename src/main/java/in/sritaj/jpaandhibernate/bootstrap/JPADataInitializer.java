@@ -1,8 +1,11 @@
 package in.sritaj.jpaandhibernate.bootstrap;
 
 import com.github.javafaker.Faker;
-import in.sritaj.jpaandhibernate.repository.*;
 import in.sritaj.jpaandhibernate.repository.customids.idautogeneration.BookSpringDataRepository;
+import in.sritaj.jpaandhibernate.repository.entitymanager.CourseRepository;
+import in.sritaj.jpaandhibernate.repository.entitymanager.PassportRepository;
+import in.sritaj.jpaandhibernate.repository.entitymanager.ReviewRepository;
+import in.sritaj.jpaandhibernate.repository.entitymanager.StudentRepository;
 import in.sritaj.jpaandhibernate.repository.inheritancemapping.joined.EmployeeRepository;
 import in.sritaj.jpaandhibernate.repository.softdelete.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;

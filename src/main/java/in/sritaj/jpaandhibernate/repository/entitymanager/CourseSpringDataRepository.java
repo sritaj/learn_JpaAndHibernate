@@ -1,6 +1,6 @@
-package in.sritaj.jpaandhibernate.repository;
+package in.sritaj.jpaandhibernate.repository.entitymanager;
 
-import in.sritaj.jpaandhibernate.entity.Course;
+import in.sritaj.jpaandhibernate.entity.entitymanager.Course;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 

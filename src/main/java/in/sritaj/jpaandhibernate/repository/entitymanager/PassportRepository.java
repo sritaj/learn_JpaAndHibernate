@@ -1,7 +1,7 @@
-package in.sritaj.jpaandhibernate.repository;
+package in.sritaj.jpaandhibernate.repository.entitymanager;
 
-import in.sritaj.jpaandhibernate.entity.Passport;
-import in.sritaj.jpaandhibernate.entity.Student;
+import in.sritaj.jpaandhibernate.entity.entitymanager.Passport;
+import in.sritaj.jpaandhibernate.entity.entitymanager.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
